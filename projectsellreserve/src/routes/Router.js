@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       { path: "/profile" },
       { path: "/admin" },
       { path: "/order" },
-      { path: "/communityPage" }
+      { path: "/community" }
     ]
   }
 ]);
