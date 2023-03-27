@@ -36,10 +36,8 @@ export default function HeaderNavbar() {
               Ham
             </span>
           </a>
-
           {/* ---------------------- */}
           {/* ---------------------- */}
-
           {/* ProfileUser */}
           <div className="flex items-center border-2 justify-between p-1 rounded-[50px] w-[100px] md:order-2 ">
             <i className="text-3xl">

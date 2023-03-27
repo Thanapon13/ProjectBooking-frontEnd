@@ -1,11 +1,20 @@
+import CardProduct from "../components/CardProduct";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>HomePage</h1>
-      <h1>HomePage</h1>
-      <h1>HomePage</h1>
-      <h1>HomePage</h1>
-      <h1>HomePage</h1>
+    // main
+    <div className="bg-red-400">
+      {/* Container All */}
+      <div>
+        {/* Logo province */}
+        <div>
+          <h1>LOGOOOOOOOO</h1>
+        </div>
+        {/* container CartRoom */}
+        <div>
+          <CardProduct />
+        </div>
+      </div>
     </div>
   );
 }
