@@ -1,6 +1,7 @@
 import "flowbite";
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 export default function CardProduct() {
   const slides = [
     {
@@ -67,10 +68,12 @@ export default function CardProduct() {
         {/* content box 2*/}
 
         <div className="text-[14px]">
-          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
-          <p>ธนบุรี, กรุงเทพ, ไทย</p>
-          <p>ราคาเริ่มต้น (ต่อคืน)</p>
-          <p>THB 14,000</p>
+          <Link to="/roomreservepage">
+            <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+            <p>ธนบุรี, กรุงเทพ, ไทย</p>
+            <p>ราคาเริ่มต้น (ต่อคืน)</p>
+            <p>THB 14,000</p>
+          </Link>
         </div>
       </div>
 

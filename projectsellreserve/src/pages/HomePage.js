@@ -3,7 +3,7 @@ import ProvinceLogo from "../components/ProvinceLogo";
 
 export default function HomePage() {
   return (
-    <div className="">
+    <div className=" w-[80%] m-auto">
       <ProvinceLogo />
       <CardProduct />
     </div>
