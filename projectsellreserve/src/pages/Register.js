@@ -33,7 +33,7 @@ export default function RegisterPage({ handleOnCloseRegister }) {
               <form className="space-y-6" action="#" autocomplete="off">
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     ชื่อ
@@ -49,7 +49,7 @@ export default function RegisterPage({ handleOnCloseRegister }) {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     นามสกุล
@@ -65,7 +65,7 @@ export default function RegisterPage({ handleOnCloseRegister }) {
                 </div>
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     อีเมล
@@ -81,7 +81,7 @@ export default function RegisterPage({ handleOnCloseRegister }) {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     รหัสผ่าน
@@ -97,7 +97,7 @@ export default function RegisterPage({ handleOnCloseRegister }) {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     ยืนยันรหัสผ่าน

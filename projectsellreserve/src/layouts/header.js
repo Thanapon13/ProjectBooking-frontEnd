@@ -45,7 +45,7 @@ export default function HeaderNavbar() {
             </i>
             <button
               type="button"
-              class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+              className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="user-dropdown"
@@ -150,7 +150,7 @@ export default function HeaderNavbar() {
           {/* ---------------------- */}
           {/* navbar */}
           <form className="flex items-center  justify-center gap-20 w-6/12">
-            <label for="simple-search" className="sr-only">
+            <label htmlFor="simple-search" className="sr-only">
               Search
             </label>
             <div className="relative w-full">

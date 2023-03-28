@@ -26,7 +26,7 @@ export default function CardProduct() {
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(4);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const prevSlide = () => {
     const isFirstSlide = currentIndex === 0;
@@ -42,31 +42,239 @@ export default function CardProduct() {
   return (
     <div className="flex flex-wrap justify-items-start gap-4 p-4">
       {/* car allt */}
-      <div className="border-2 flex flex-col">
+      <div className="flex flex-col justify-center gap-2">
         {/* image box 1 */}
-        <div className="w-[280px] h-[350px]  relative">
+
+        <div className="w-[280px] h-[300px]  group">
           <div
             style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
             className="w-full h-full rounded-2xl bg-center duration-500"
-          ></div>
-
-          {/* Left  Arrow*/}
-          <div className="absolute top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-            <BsChevronCompactLeft onClick={prevSlide} size={15} />
-          </div>
-          {/* Rigth  Arrow*/}
-          <div className="absolute top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-            <BsChevronCompactRight onClick={nextSlide} size={15} />
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
           </div>
         </div>
 
         {/* content box 2*/}
 
-        <div className="border-2">
-          <p>Title</p>
-          <p>Price</p>
-          <p>address</p>
-          <p>Description</p>
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
+        </div>
+      </div>
+
+      {/*---------------------------- */}
+
+      <div className="flex flex-col justify-center gap-2">
+        {/* image box 1 */}
+
+        <div className="w-[280px] h-[300px]  group">
+          <div
+            style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
+            className="w-full h-full rounded-2xl bg-center duration-500"
+          >
+            {/* Arrow */}
+            <div className="flex justify-between items-center w-[280px] h-[300px] ">
+              {/* Left  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactLeft onClick={prevSlide} size={15} />
+              </div>
+              {/* Rigth  Arrow*/}
+              <div className="hidden group-hover:block  top-[50%] -translate-x-0 trans-y-[-5] right-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
+                <BsChevronCompactRight onClick={nextSlide} size={15} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* content box 2*/}
+
+        <div className="text-[14px]">
+          <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
+          <p>ธนบุรี, กรุงเทพ, ไทย</p>
+          <p>ราคาเริ่มต้น (ต่อคืน)</p>
+          <p>THB 14,000</p>
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ export default function LoginPage({ handleOnCloseLogin }) {
               <form className="space-y-6" action="#" autocomplete="off">
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     อีเมล
@@ -50,7 +50,7 @@ export default function LoginPage({ handleOnCloseLogin }) {
                 </div>
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     รหัสผ่าน
@@ -76,7 +76,7 @@ export default function LoginPage({ handleOnCloseLogin }) {
                       />
                     </div>
                     <label
-                      for="remember"
+                      htmlFor="remember"
                       className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                       จดจำฉัน
