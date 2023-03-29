@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
 import Layout from "../layouts/layout";
-import RoomReservePage from "../pages/RoomReservePage";
+import ProductRoomPage from "../pages/ProductRoomPage";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
       { path: "/admin" },
       { path: "/order" },
       { path: "/community" },
-      { path: "/roomreservepage", element: <RoomReservePage /> }
+      { path: "/productroompage", element: <ProductRoomPage /> }
     ]
   }
 ]);

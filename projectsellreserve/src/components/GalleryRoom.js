@@ -17,23 +17,32 @@ export default function GalleryRoom() {
   return (
     <div>
       {galleryRooms.map((el, idx) => (
-        <div key={idx} className=" bg-red-100 flex gap-3 ">
+        <div key={idx} className="flex gap-3 cursor-pointer">
           {/* Image Left */}
-          <div>
-            <img className="w-[554px] h-[382px] " src={el.galleryRooms1}></img>
+          <div className=" rounded-s-3xl">
+            <img
+              className="w-[600px] h-[382px] rounded-l-xl"
+              src={el.galleryRooms1}
+            ></img>
           </div>
           {/* Image Right */}
-          <div className="flex gap-3 justify-center items-center">
+          <div className="flex gap-3">
             {/* Right box 1 */}
-            <div className="flex flex-col gap-3 justify-center items-center">
-              <img className="w-[270px] h-[185px]" src={el.galleryRooms2}></img>
-              <img className="w-[270px] h-[185px]" src={el.galleryRooms3}></img>
+            <div className="flex flex-col gap-3 ">
+              <img className="w-[300px] h-[185px]" src={el.galleryRooms2}></img>
+              <img className="w-[300px] h-[185px]" src={el.galleryRooms3}></img>
             </div>
 
             {/* Right box 2 */}
-            <div className="flex flex-col gap-3 justify-center items-center">
-              <img className="w-[270px] h-[185px]" src={el.galleryRooms4}></img>
-              <img className="w-[270px] h-[185px]" src={el.galleryRooms5}></img>
+            <div className="flex flex-col gap-3 ">
+              <img
+                className="w-[300px] h-[185px] rounded-t-xl"
+                src={el.galleryRooms4}
+              ></img>
+              <img
+                className="w-[300px] h-[185px] rounded-br-xl"
+                src={el.galleryRooms5}
+              ></img>
             </div>
           </div>
         </div>

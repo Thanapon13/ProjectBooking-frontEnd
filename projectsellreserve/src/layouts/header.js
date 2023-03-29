@@ -5,9 +5,9 @@ import { BsFillCartFill } from "react-icons/bs";
 import LoginPage from "../pages/LoginPage";
 import { useState } from "react";
 import RegisterPage from "../pages/Register";
+
 export default function HeaderNavbar() {
   const [ModalLogin, setModalLogin] = useState(false);
-
   const toggleModal = async () => {
     setModalLogin(!ModalLogin);
   };
@@ -26,10 +26,10 @@ export default function HeaderNavbar() {
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
         <div className="container flex flex-wrap items-center justify-between mx-auto ">
           {/* logo */}
-          <a href="https://flowbite.com/" className="flex items-center">
+          <a href="/" className="flex items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-6 mr-3 sm:h-9"
+              src="https://1417094351.rsc.cdn77.org/articles/8850/8849289/thumbnail/large.gif?1"
+              className="h-6 mr-3 sm:h-9 rounded-full"
               alt="Flowbite Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
@@ -40,7 +40,7 @@ export default function HeaderNavbar() {
           {/* ---------------------- */}
           {/* ProfileUser */}
           <div className="flex items-center border-2 justify-between p-1 rounded-[50px] w-[100px] md:order-2 ">
-            <i className="text-3xl">
+            <i className="text-3xl ">
               <BiMenu />
             </i>
             <button
@@ -178,11 +178,11 @@ export default function HeaderNavbar() {
               />
             </div>
           </form>
-          <div>
+          {/* <div>
             <i className="text-[30px] cursor-pointer">
               <BsFillCartFill />
             </i>
-          </div>
+          </div> */}
         </div>
       </nav>
       <div>

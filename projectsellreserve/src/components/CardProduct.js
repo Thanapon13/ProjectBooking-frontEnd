@@ -68,7 +68,7 @@ export default function CardProduct() {
         {/* content box 2*/}
 
         <div className="text-[14px]">
-          <Link to="/roomreservepage">
+          <Link to="/productroompage">
             <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
             <p>ธนบุรี, กรุงเทพ, ไทย</p>
             <p>ราคาเริ่มต้น (ต่อคืน)</p>
