@@ -1,7 +1,6 @@
 import "flowbite";
 import profile from "../assets/blank.png";
 import { BiMenu } from "react-icons/bi";
-import { BsFillCartFill } from "react-icons/bs";
 import LoginPage from "../pages/LoginPage";
 import { useState } from "react";
 import RegisterPage from "../pages/Register";
@@ -178,11 +177,6 @@ export default function HeaderNavbar() {
               />
             </div>
           </form>
-          {/* <div>
-            <i className="text-[30px] cursor-pointer">
-              <BsFillCartFill />
-            </i>
-          </div> */}
         </div>
       </nav>
       <div>
