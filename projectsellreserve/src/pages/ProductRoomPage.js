@@ -13,7 +13,7 @@ export default function ProductRoomPage() {
   const handleOnCloseLearnMore = toggleModal;
   return (
     <div>
-      <div className="w-[80%] m-auto flex flex-col mt-10 gap-10">
+      <div className="w-[80%] m-auto flex flex-col gap-10">
         <div className="flex flex-col justify-center items-start gap-5">
           {/* room title box 1 */}
           <div>

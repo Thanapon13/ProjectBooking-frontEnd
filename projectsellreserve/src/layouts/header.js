@@ -21,8 +21,8 @@ export default function HeaderNavbar() {
   };
   const handleOnCloseRegister = toggleRegister;
   return (
-    <div>
-      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <div className="border border-b-slate-200">
+      <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 ">
         <div className="container flex flex-wrap items-center justify-between mx-auto ">
           {/* logo */}
           <a href="/" className="flex items-center">
@@ -97,7 +97,7 @@ export default function HeaderNavbar() {
                 </div>
                 <li>
                   <a
-                    href="#"
+                    href="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     บัญชีผู้ใช้

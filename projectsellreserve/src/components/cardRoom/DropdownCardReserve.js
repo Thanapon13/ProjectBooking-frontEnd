@@ -10,7 +10,7 @@ export default function DropdownCardReserve() {
     <div>
       <button
         type="button"
-        className="flex  justify-around  gap-20 p-2 border-r-2 border-l-2  border-b-2  rounded-b-xl w-full"
+        className="flex justify-around gap-20 p-2 border-2 rounded-b-xl w-full focus:border-black"
         onClick={() => setIsOpen(prev => !prev)}
       >
         <div className="flex flex-col justify-center items-start">
