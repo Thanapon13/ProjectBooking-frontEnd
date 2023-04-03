@@ -4,6 +4,10 @@ import { BiMenu } from "react-icons/bi";
 import LoginPage from "../pages/LoginPage";
 import { useState } from "react";
 import RegisterPage from "../pages/Register";
+import { AiFillEdit, AiOutlineLogin } from "react-icons/ai";
+import { FaHouseUser } from "react-icons/fa";
+import { BsFillCartFill } from "react-icons/bs";
+import { MdLogout } from "react-icons/md";
 
 export default function HeaderNavbar() {
   const [ModalLogin, setModalLogin] = useState(false);
@@ -78,9 +82,12 @@ export default function HeaderNavbar() {
                     <a
                       onClick={toggleModal}
                       href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
-                      เข้าสู่ระบบ
+                      <i>
+                        <AiOutlineLogin />
+                      </i>
+                      <p>เข้าสู่ระบบ</p>
                     </a>
                   </li>
 
@@ -89,7 +96,7 @@ export default function HeaderNavbar() {
                     <a
                       href="#"
                       onClick={toggleRegister}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                      className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       ลงทะเบียน
                     </a>
@@ -98,26 +105,48 @@ export default function HeaderNavbar() {
                 <li>
                   <a
                     href="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
-                    บัญชีผู้ใช้
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                  >
-                    ประวัติการสั่งซื้อ
+                    <i>
+                      <FaHouseUser />{" "}
+                    </i>
+                    <p>บัญชีผู้ใช้</p>
                   </a>
                 </li>
 
                 <li>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
-                    ออกจากระบบ
+                    <i>
+                      <BsFillCartFill />
+                    </i>
+                    <p>ตะกร้าสินค้าของคุณ</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >
+                    <i>
+                      <AiFillEdit />
+                    </i>
+                    <p>ประวัติการสั่งซื้อ</p>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >
+                    <i>
+                      <MdLogout />
+                    </i>
+                    <p>ออกจากระบบ</p>
                   </a>
                 </li>
               </ul>

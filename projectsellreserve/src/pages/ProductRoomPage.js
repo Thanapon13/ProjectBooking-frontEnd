@@ -14,7 +14,7 @@ export default function ProductRoomPage() {
   return (
     <div>
       <div className="w-[80%] m-auto flex flex-col gap-10">
-        <div className="flex flex-col justify-center items-start gap-5">
+        <div className="flex flex-col justify-center items-start gap-5rounded-full">
           {/* room title box 1 */}
           <div>
             <h1 className="font-bold text-[26px]">Room Name</h1>

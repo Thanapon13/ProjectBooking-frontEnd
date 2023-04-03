@@ -1,30 +1,74 @@
 import profileUser from "../assets/blank.png";
-
+import { AiOutlineHistory } from "react-icons/ai";
+import EditProfile from "../components/EditProfile";
 export default function ProfilePage() {
   return (
-    <div className="w-screen border-2 flex">
+    <div className="flex bg-[#E5E7EB] border-b-2">
       {/* Left */}
-      <div className="border-2 w-1/4">
-        <div className="flex justify-start items-center gap-10">
+      <div className=" w-[20%]  bg-white">
+        <div className="flex justify-start items-center gap-10 p-2 border-b-2">
           <div>
             <img
               alt="img"
               src={profileUser}
-              className="w-[200px] rounded-full"
+              className="w-[80px] rounded-full"
             />
           </div>
           <div>
-            <h1>User Name</h1>
+            <h1 className="font-bold text-[20px]">User Name</h1>
           </div>
         </div>
+
         <nav>
-          <p>asd</p>
+          <a
+            href="#"
+            className="flex items-center justify-center py-5 shadow-sm hover:bg-gray-100"
+          >
+            <i className="text-m pr-2 text-gray-600">
+              <AiOutlineHistory />
+            </i>
+            <h1 className="text-m text-gray-600">ประวัติการสั่งซื้อ</h1>
+          </a>
+
+          <a
+            href="#"
+            className="flex items-center justify-center py-5 shadow-sm hover:bg-gray-100"
+          >
+            <i className="text-m pr-2 text-gray-600">
+              <AiOutlineHistory />
+            </i>
+            <h1 className="text-m text-gray-600">ประวัติการจอง</h1>
+          </a>
         </nav>
       </div>
 
       {/* Right */}
-      <div className="border-2 w-3/4">
-        <p>ProfilePage</p>
+      <div className="w-[80%]">
+        <div className="bg-white m-10 p-10">
+          <div className="flex justify-end items-end">
+            <EditProfile />
+          </div>
+
+          <img src={profileUser} className="h-40 w-40 rounded-full border-2" />
+          <div className="flex">
+            <div className="mt-8 mx-5 space-y-3 text-md font-bold w-1/5 text-gray-600">
+              <p>First Name</p>
+              <p>Last Name</p>
+              <p>Email Address</p>
+              <p>Mobile</p>
+              <p>Address</p>
+              <p>Line Token</p>
+            </div>
+            <div className="mt-8 mx-5 space-y-3 text-md text-md">
+              <p>Haruka</p>
+              <p>senpai</p>
+              <p>Email Address</p>
+              <p>Mobile</p>
+              <p>Address</p>
+              <p>Line Token</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
