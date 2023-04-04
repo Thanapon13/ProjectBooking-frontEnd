@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import Layout from "../layouts/layout";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProfilePage from "../pages/Profile";
+import ShoppingCartPage from "../pages/ShoppingCartPage";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
       { path: "/admin" },
       { path: "/order" },
       { path: "/community" },
-      { path: "/productroompage", element: <ProductRoomPage /> }
+      { path: "/productroompage", element: <ProductRoomPage /> },
+      { path: "/cartpage", element: <ShoppingCartPage /> }
     ]
   }
 ]);
