@@ -1,5 +1,4 @@
 import "flowbite";
-
 import GalleryRoom from "../components/GalleryRoom";
 import UserImage from "../assets/blank.png";
 import { useState } from "react";

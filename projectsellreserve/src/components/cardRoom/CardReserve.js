@@ -2,7 +2,6 @@ import "flowbite";
 import DropdownCardReserve from "./DropdownCardReserve";
 import Calendar from "./Calendar";
 import { useState } from "react";
-import ModalButtonCardReserve from "./ModalButtonCardReserve";
 
 export default function CardReserve() {
   const [ModalCardReserve, setModalCardReserve] = useState(false);
@@ -43,7 +42,14 @@ export default function CardReserve() {
         </div>
         <DropdownCardReserve />
 
-        <ModalButtonCardReserve />
+        <a href="/paymentbooking">
+          <button
+            type="button"
+            className="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm p-4 text-center mr-2 mb-2 mt-5"
+          >
+            <p className="text-[20px]">จอง</p>
+          </button>
+        </a>
       </div>
     </div>
   );

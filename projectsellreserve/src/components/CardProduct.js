@@ -43,7 +43,7 @@ export default function CardProduct() {
   return (
     <div className="flex flex-wrap justify-items-start gap-4 p-4">
       {/* car allt */}
-      <div className="flex flex-col justify-center gap-2">
+      <div className="flex flex-col justify-center gap-2 ">
         {/* image box 1 */}
 
         <div className="w-[280px] h-[300px]  group">
@@ -68,7 +68,7 @@ export default function CardProduct() {
         {/* content box 2*/}
 
         <div className="text-[14px]">
-          <Link to="/productroompage">
+          <Link to="/productroompage" target="_blank">
             <h1 className="font-bold	text-[18px]">Samui ไทย</h1>
             <p>ธนบุรี, กรุงเทพ, ไทย</p>
             <p>ราคาเริ่มต้น (ต่อคืน)</p>

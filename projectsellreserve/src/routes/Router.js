@@ -5,6 +5,8 @@ import Layout from "../layouts/layout";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProfilePage from "../pages/Profile";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
+import PaymentBooking from "../pages/PaymentBooking";
+import Footer from "../layouts/footer";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,8 @@ const router = createBrowserRouter([
       { path: "/productroompage", element: <ProductRoomPage /> },
       { path: "/cartpage", element: <ShoppingCartPage /> }
     ]
-  }
+  },
+  { path: "/paymentbooking", element: <PaymentBooking /> }
 ]);
 
 export default function Router() {
