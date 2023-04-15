@@ -1,12 +1,20 @@
+import { useState } from "react";
 import CardPayMentOmise from "../components/payment/CardPayMentOmise";
 import Footer from "../layouts/footer";
 import { AiOutlineLeft } from "react-icons/ai";
+import CancellationPolicy from "../components/ModalCancellationPolicy";
 export default function PaymentBooking() {
   const cardOrder = [
     {
       url: "https://a0.muscache.com/im/pictures/miso/Hosting-34658120/original/160b4c17-1db0-4659-ad98-c81567b4ed6c.jpeg?im_w=1200"
     }
   ];
+
+  const [ModalCancellationPolicy, setModalCancellationPolicy] = useState(false);
+  const toggleModal = async () => {
+    setModalCancellationPolicy(!ModalCancellationPolicy);
+  };
+  const handleOnCloseCancellationPolicy = toggleModal;
   return (
     <div>
       {/* Header */}
@@ -78,8 +86,38 @@ export default function PaymentBooking() {
             <h1 className="font-bold text-xl">จ่ายด้วย</h1>
             <CardPayMentOmise />
           </div>
-        </div>
 
+          <div>
+            <div className="flex flex-col gap-4 mt-2 border-b-2 pb-6">
+              <h1 className="font-bold text-2xl">นโยบายยกเลิกการจอง</h1>
+              <div>
+                <p>
+                  <span className="font-bold text-base">
+                    ยกเลิกฟรีภายใน 48 ชั่วโมง
+                  </span>{" "}
+                  ยกเลิกก่อนวันที่ 13 ส.ค. เพื่อรับเงินคืนบางส่วน
+                </p>
+                {/* Modal */}
+                {ModalCancellationPolicy && (
+                  <CancellationPolicy
+                    handleOnCloseCancellationPolicy={
+                      handleOnCloseCancellationPolicy
+                    }
+                  />
+                )}
+                <button
+                  className="font-bold underline text-base"
+                  onClick={toggleModal}
+                >
+                  ดูข้อมูลเพิ่มเติม
+                </button>
+              </div>
+            </div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        {/* ------------------------------------------------------------------- */}
         {/* Right Container */}
         <div className="w-[50%] flex justify-center items-center">
           <div className="border-2 w-[460px] rounded-xl p-5">
