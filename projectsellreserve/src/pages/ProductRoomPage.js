@@ -4,6 +4,7 @@ import UserImage from "../assets/blank.png";
 import { useState } from "react";
 import LearnMore from "../components/ModalLearnMore";
 import CardReserve from "../components/cardRoom/CardReserve";
+import CardSeller from "../components/cardRoom/CardSeller";
 
 export default function ProductRoomPage() {
   const [ModalLearnMore, setModalLearnMore] = useState(false);
@@ -14,8 +15,8 @@ export default function ProductRoomPage() {
   const handleOnCloseLearnMore = toggleModal;
   return (
     <div>
-      <div className="w-[80%] m-auto flex flex-col gap-10">
-        <div className="flex flex-col justify-center items-start gap-5rounded-full">
+      <div className="w-[80%] m-auto flex flex-col gap-10 mt-5">
+        <div className="flex flex-col justify-center items-start gap-5 rounded-full">
           {/* room title box 1 */}
           <div>
             <h1 className="font-bold text-[26px]">Room Name</h1>
@@ -43,22 +44,24 @@ export default function ProductRoomPage() {
                 รายละเอียดที่พักไม่ถูกต้อง และมีปัญหาอื่นๆ เช่น
                 ปัญหาในการเช็คอิน
               </p>
-              <a
+              <button
                 className="underline font-bold cursor-pointer"
                 onClick={toggleModal}
               >
                 ดูข้อมูลเพิ่มเติม
-              </a>
+              </button>
             </div>
 
             <div className="w-1/2 flex border-b-2 pb-8">
-              <img className="w-8 h-8 rounded-full" src={UserImage} />
+              <img className="w-8 h-8 rounded-full" src={UserImage} alt="img" />
               <h1>ให้เช่าที่พักโดย : Username</h1>
             </div>
           </div>
+
           {/* BOX RIGHT ORDER */}
           <div className="w-1/2">
             <CardReserve />
+            <CardSeller />
           </div>
         </div>
       </div>

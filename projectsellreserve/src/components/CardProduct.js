@@ -73,6 +73,7 @@ export default function CardProduct() {
             <p>ธนบุรี, กรุงเทพ, ไทย</p>
             <p>ราคาเริ่มต้น (ต่อคืน)</p>
             <p>THB 14,000</p>
+            <p>ประเภท : จอง</p>
           </Link>
         </div>
       </div>

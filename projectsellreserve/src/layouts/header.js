@@ -1,29 +1,20 @@
 import "flowbite";
 import profile from "../assets/blank.png";
 import { BiMenu } from "react-icons/bi";
-import LoginPage from "../pages/LoginPage";
 import { useState } from "react";
-import RegisterPage from "../pages/Register";
 import { AiFillEdit, AiOutlineLogin } from "react-icons/ai";
 import { FaHouseUser } from "react-icons/fa";
 import { BsFillCartFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
+import Search from "../features/Search";
+import Modal from "../components/Modal";
+import RegisterForm from "../features/auth/RegisterForm";
+import LoginForm from "../features/auth/LoginForm";
 
 export default function HeaderNavbar() {
-  const [ModalLogin, setModalLogin] = useState(false);
-  const toggleModal = async () => {
-    setModalLogin(!ModalLogin);
-  };
-  const handleOnCloseLogin = toggleModal;
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRejister, setOpenRejister] = useState(false);
 
-  // -----------------------------------------------
-
-  const [ModalRegister, setModalRegister] = useState(false);
-
-  const toggleRegister = async () => {
-    setModalRegister(!ModalRegister);
-  };
-  const handleOnCloseRegister = toggleRegister;
   return (
     <div className="border border-b-slate-200">
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 ">
@@ -80,7 +71,7 @@ export default function HeaderNavbar() {
                   {/* // <!-- Modal toggle --> */}
                   <li>
                     <a
-                      onClick={toggleModal}
+                      onClick={() => setOpenLogin(true)}
                       href="#"
                       className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
@@ -91,11 +82,10 @@ export default function HeaderNavbar() {
                     </a>
                   </li>
 
-                  {/* ----------------------------------- */}
                   <li>
                     <a
                       href="#"
-                      onClick={toggleRegister}
+                      onClick={() => setOpenRejister(true)}
                       className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       <img
@@ -133,7 +123,7 @@ export default function HeaderNavbar() {
 
                 <li>
                   <a
-                    href="#"
+                    href="/orderhistory"
                     className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     <i>
@@ -157,55 +147,28 @@ export default function HeaderNavbar() {
               </ul>
             </div>
           </div>
-          {/* ---------------------- */}
+
           {/* ---------------------- */}
           {/* navbar */}
-          <form className="flex items-center  justify-center gap-20 w-6/12">
-            <label htmlFor="simple-search" className="sr-only">
-              Search
-            </label>
-            <div className="relative w-full">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <input
-                type="text"
-                id="simple-search"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search"
-                required
-              />
-            </div>
-          </form>
+          <Search />
         </div>
       </nav>
-      <div>
-        {ModalLogin && (
-          <div>
-            <LoginPage handleOnCloseLogin={handleOnCloseLogin} />
-          </div>
-        )}
-      </div>
 
-      <div>
-        {ModalRegister && (
-          <div>
-            <RegisterPage handleOnCloseRegister={handleOnCloseRegister} />
-          </div>
-        )}
-      </div>
+      <Modal
+        open={openLogin}
+        onClose={() => setOpenLogin(false)}
+        title="เข้าสู่ระบบ"
+      >
+        <LoginForm onClose={() => setOpenLogin(false)} />
+      </Modal>
+
+      <Modal
+        open={openRejister}
+        onClose={() => setOpenRejister(false)}
+        title="สมัครสมาชิก"
+      >
+        <RegisterForm onClose={() => setOpenRejister(false)} />
+      </Modal>
     </div>
   );
 }

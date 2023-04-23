@@ -113,8 +113,31 @@ export default function PaymentBooking() {
                 </button>
               </div>
             </div>
-            <div></div>
-            <div></div>
+
+            <div className="border-b-2 mt-6 pb-6 p-2 flex flex-col justify-center items-start gap-4">
+              <div>
+                <h1 className="font-bold text-xl">กฎพื้นฐาน</h1>
+              </div>
+
+              <div>
+                <p>
+                  เราขอให้ผู้เข้าพักทุกคนระลึกถึงคุณสมบัติที่ดีของผู้เข้าพักเพียงไม่กี่ข้อ
+                </p>
+              </div>
+
+              <ul className="list-disc ml-4 text-[14px]">
+                <li>ปฏิบัติตามกฎของที่พัก</li>
+                <li>ดูแลที่พักของโฮสต์เหมือนเป็นบ้านของคุณเอง</li>
+              </ul>
+            </div>
+            <div className="mb-20 mt-6">
+              <button
+                type="button"
+                className="w-[30%] text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm p-4 text-center mr-2 mb-2 mt-5"
+              >
+                <p className="text-[20px]">ยืนยันการชำระเงิน</p>
+              </button>
+            </div>
           </div>
         </div>
         {/* ------------------------------------------------------------------- */}

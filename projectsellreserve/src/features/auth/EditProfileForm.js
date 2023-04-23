@@ -1,7 +1,7 @@
 import "flowbite";
-import profileUser from "../assets/blank.png";
+import profileUser from "../../assets/blank.png";
 import { AiFillEdit } from "react-icons/ai";
-export default function EditProfile() {
+export default function EditProfileForm() {
   return (
     <div>
       <div className="text-center">
@@ -126,7 +126,7 @@ export default function EditProfile() {
             type="text"
             name="address"
             className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
-            placeholder=" Mobile"
+            placeholder=" 11Address"
             autoComplete="off"
           />
         </div>
