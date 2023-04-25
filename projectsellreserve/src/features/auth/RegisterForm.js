@@ -1,6 +1,40 @@
+import { useState } from "react";
+import Input from "../../components/Input";
+import validateRegister from "../../validators/validate-register";
+
+const initiaInput = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: ""
+};
+
 export default function RegisterForm() {
+  const [input, setInput] = useState(initiaInput);
+  const [error, setError] = useState({});
+
+  const handleChangeInput = e => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    const result = validateRegister(input);
+    if (result) {
+      setError(result);
+    } else {
+      setError({});
+    }
+  };
+
   return (
-    <form className="space-y-6" action="#" autoComplete="off">
+    <form
+      className="space-y-6"
+      action="#"
+      autoComplete="off"
+      onSubmit={handleSubmitForm}
+    >
       <div>
         <label
           htmlFor="email"
@@ -8,13 +42,13 @@ export default function RegisterForm() {
         >
           ชื่อ
         </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          placeholder="ชื่อ"
-          required
+
+        <Input
+          placeholder="First name"
+          name="firstName"
+          value={input.firstName}
+          onChange={handleChangeInput}
+          error={error.firstName}
         />
       </div>
       <div>
@@ -24,13 +58,13 @@ export default function RegisterForm() {
         >
           นามสกุล
         </label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          placeholder="นามสกุล"
-          required
+
+        <Input
+          placeholder="Last name"
+          name="lastName"
+          value={input.lastName}
+          onChange={handleChangeInput}
+          error={error.lastName}
         />
       </div>
       <div>
@@ -40,13 +74,13 @@ export default function RegisterForm() {
         >
           อีเมล
         </label>
-        <input
-          type="email"
+
+        <Input
+          placeholder="Email"
           name="email"
-          id="email"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          placeholder="อีเมล"
-          required
+          value={input.email}
+          onChange={handleChangeInput}
+          error={error.email}
         />
       </div>
       <div>
@@ -56,13 +90,14 @@ export default function RegisterForm() {
         >
           รหัสผ่าน
         </label>
-        <input
+
+        <Input
           type="password"
+          placeholder="Password"
           name="password"
-          id="password"
-          placeholder="รหัสผ่าน"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          required
+          value={input.password}
+          onChange={handleChangeInput}
+          error={error.password}
         />
       </div>
       <div>
@@ -72,13 +107,14 @@ export default function RegisterForm() {
         >
           ยืนยันรหัสผ่าน
         </label>
-        <input
+
+        <Input
           type="password"
-          name="password"
-          id="password"
-          placeholder="ยืนยันรหัสผ่าน"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-          required
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          value={input.confirmPassword}
+          onChange={handleChangeInput}
+          error={error.confirmPassword}
         />
       </div>
       <button
