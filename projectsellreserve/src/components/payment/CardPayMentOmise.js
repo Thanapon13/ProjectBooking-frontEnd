@@ -52,33 +52,33 @@ export default function CardPayMentOmise() {
       <div className="mb-4">
         {/* Container Top */}
 
-        <div class="relative">
+        <div className="relative">
           <input
             type="text"
             id="outlined_success"
             aria-describedby="outlined_success_help"
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+            className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
             placeholder="ชื่อบัตร"
           />{" "}
           <label
-            for="outlined_success"
-            class="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            htmlFor="outlined_success"
+            className="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
           >
             ชื่อบัตร
           </label>
         </div>
 
-        <div class="relative">
+        <div className="relative">
           <input
             type="text"
             id="outlined_success"
             aria-describedby="outlined_success_help"
-            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+            className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
             placeholder="0000 "
           />{" "}
           <label
-            for="outlined_success"
-            class="flex justify-start items-center absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            htmlFor="outlined_success"
+            className="flex justify-start items-center absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
           >
             เลขบัตร{" "}
             <i className="text-[#484848]">
@@ -90,33 +90,33 @@ export default function CardPayMentOmise() {
         <div className="flex">
           {/* Box Left
            */}
-          <div class="relative">
+          <div className="relative">
             <input
               type="text"
               id="outlined_success"
               aria-describedby="outlined_success_help"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
               placeholder="ดด / ปป "
             />{" "}
             <label
-              for="outlined_success"
-              class="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              htmlFor="outlined_success"
+              className="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
             >
               วันหมดอายุ
             </label>
           </div>
           {/* Box Right */}
-          <div class="relative">
+          <div className="relative">
             <input
               type="text"
               id="outlined_success"
               aria-describedby="outlined_success_help"
-              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
+              className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-400 appearance-none dark:text-white  focus:outline-none focus:ring-0 focus:border-gray-400 peer"
               placeholder="123 "
             />{" "}
             <label
-              for="outlined_success"
-              class="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              htmlFor="outlined_success"
+              className="absolute text-sm text-black dark:text-black duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
             >
               CVV
             </label>

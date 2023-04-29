@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import Input from "../../components/Input";
 import validateRegister from "../../validators/validate-register";
+import * as authApi from "../../apis/auth-api";
+import useLoading from "../../hooks/useLoading";
 
 const initiaInput = {
   firstName: "",
@@ -10,21 +13,35 @@ const initiaInput = {
   confirmPassword: ""
 };
 
-export default function RegisterForm() {
+export default function RegisterForm({ onClose }) {
   const [input, setInput] = useState(initiaInput);
   const [error, setError] = useState({});
+
+  const { startLoading, stopLoading } = useLoading();
 
   const handleChangeInput = e => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitForm = e => {
-    e.preventDefault();
-    const result = validateRegister(input);
-    if (result) {
-      setError(result);
-    } else {
-      setError({});
+  const handleSubmitForm = async e => {
+    try {
+      e.preventDefault();
+      const result = validateRegister(input);
+      if (result) {
+        setError(result);
+      } else {
+        setError({});
+        startLoading();
+        await authApi.register(input);
+        setInput(initiaInput);
+        onClose();
+        toast.success("sucess register. please login to continue");
+      }
+    } catch (err) {
+      // console.log(err, "err");
+      toast.error(err.response?.data.message);
+    } finally {
+      stopLoading();
     }
   };
 

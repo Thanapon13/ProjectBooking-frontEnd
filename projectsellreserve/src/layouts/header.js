@@ -50,7 +50,7 @@ export default function HeaderNavbar() {
               <img
                 className="w-8 h-8 rounded-full"
                 src={profile}
-                alt="user photo"
+                alt="profile"
               />
             </button>
             {/* <!-- Dropdown menu --> */}
@@ -72,7 +72,7 @@ export default function HeaderNavbar() {
                   <li>
                     <a
                       onClick={() => setOpenLogin(true)}
-                      href="#"
+                      href="/#"
                       className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
                       <i>
@@ -84,7 +84,7 @@ export default function HeaderNavbar() {
 
                   <li>
                     <a
-                      href="#"
+                      href="/#"
                       onClick={() => setOpenRejister(true)}
                       className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
@@ -135,7 +135,7 @@ export default function HeaderNavbar() {
 
                 <li>
                   <a
-                    href="#"
+                    href="/#"
                     className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     <i>
