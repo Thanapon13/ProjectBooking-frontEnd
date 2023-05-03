@@ -17,12 +17,18 @@ const router = createBrowserRouter([
       { path: "/admin" },
       { path: "/order" },
       { path: "/community" },
-      { path: "/productroompage", element: <ProductRoomPage /> },
+      {
+        path: "/productroompage",
+        element: <ProductRoomPage />
+      },
       { path: "/cartpage", element: <ShoppingCartPage /> },
       { path: "/orderhistory", element: <OrderHistory /> }
     ]
   },
-  { path: "/paymentbooking", element: <PaymentBooking /> }
+  {
+    path: "/paymentbooking",
+    element: <PaymentBooking />
+  }
 ]);
 
 export default function Router() {

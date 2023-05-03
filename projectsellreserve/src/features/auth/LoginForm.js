@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
-export default function LoginForm() {
+export default function LoginForm({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,6 +12,7 @@ export default function LoginForm() {
     try {
       e.preventDefault();
       await login(email, password);
+      onClose();
       toast.success("login success");
     } catch (err) {
       console.log(err);
@@ -65,7 +66,7 @@ export default function LoginForm() {
       <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
         ยังไม่ได้ลงทะเบียน?{" "}
         <a
-          href="#"
+          href="/#"
           className="text-blue-700 hover:underline dark:text-blue-500"
         >
           สร้างบัญชี

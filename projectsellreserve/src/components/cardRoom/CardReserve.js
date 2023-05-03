@@ -2,9 +2,23 @@ import "flowbite";
 import DropdownCardReserve from "./DropdownCardReserve";
 import Calendar from "./Calendar";
 import { useState } from "react";
+import Modal from "../Modal";
+import LoginForm from "../../features/auth/LoginForm";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function CardReserve() {
+  const { authenticatedUser } = useAuth();
+
   const [ModalCardReserve, setModalCardReserve] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  // const navigate = useNavigate();
+
+  // const openModalLogin = () => {
+  //   if (!authenticatedUser) {
+  //     setOpenLogin(true);
+  //   }
+  // };
 
   const toggleRegister = async () => {
     setModalCardReserve(!ModalCardReserve);
@@ -41,16 +55,23 @@ export default function CardReserve() {
           </button>
         </div>
         <DropdownCardReserve />
-
         <a href="/paymentbooking">
           <button
             type="button"
+            // onClick={openModalLogin}
             className="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm p-4 text-center mr-2 mb-2 mt-5"
           >
             <p className="text-[20px]">จอง</p>
           </button>
         </a>
       </div>
+      <Modal
+        open={openLogin}
+        onClose={() => setOpenLogin(false)}
+        title="เข้าสู่ระบบ"
+      >
+        <LoginForm onClose={() => setOpenLogin(false)} />
+      </Modal>
     </div>
   );
 }
