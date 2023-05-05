@@ -7,13 +7,21 @@ import ShoppingCartPage from "../pages/ShoppingCartPage";
 import PaymentBooking from "../pages/PaymentBooking";
 import OrderHistory from "../pages/OrderHistoryPage";
 import ProductRoomPage from "../pages/ProductRoomPage";
+import ProtectedRout from "../features/auth/ProtectedRout";
 
 const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       { path: "/", element: <HomePage /> },
-      { path: "/profile", element: <ProfilePage /> },
+      {
+        path: "/profile/:userId",
+        element: (
+          <ProtectedRout>
+            <ProfilePage />
+          </ProtectedRout>
+        )
+      },
       { path: "/admin" },
       { path: "/order" },
       { path: "/community" },
@@ -21,8 +29,23 @@ const router = createBrowserRouter([
         path: "/productroompage",
         element: <ProductRoomPage />
       },
-      { path: "/cartpage", element: <ShoppingCartPage /> },
-      { path: "/orderhistory", element: <OrderHistory /> }
+      {
+        path: "/cartpage",
+        element: (
+          <ProtectedRout>
+            <ShoppingCartPage />
+          </ProtectedRout>
+        )
+      },
+
+      {
+        path: "/orderhistory",
+        element: (
+          <ProtectedRout>
+            <OrderHistory />
+          </ProtectedRout>
+        )
+      }
     ]
   },
   {

@@ -1,6 +1,7 @@
 import "flowbite";
 import profileUser from "../../assets/blank.png";
 import { AiFillEdit } from "react-icons/ai";
+
 export default function EditProfileForm() {
   return (
     <div>
@@ -53,22 +54,23 @@ export default function EditProfileForm() {
           <button className="flex justify-around">
             <img
               src={profileUser}
+              alt="img"
               className="m-auto h-20 w-20 rounded-full border text-gray-600"
             />
 
+            {/* <Avatar src={authenticateUser.profileImage} size="80px" /> */}
             <input
               type="file"
               className="text-xs text-grey-500
               hover:file:cursor-pointer hover:file:bg-grey-300
-              hover:file:text-blue-500 m-auto w-1/2
-            "
+              hover:file:text-blue-500 m-auto w-1/2"
             />
           </button>
         </div>
 
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
-            First Names
+            First Name
           </label>
           <input
             type="text"
@@ -100,7 +102,7 @@ export default function EditProfileForm() {
             type="text"
             name="emailaddress"
             className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
-            placeholder=" EmailAddress"
+            placeholder="EmailAddress"
             autoComplete="off"
           />
         </div>
@@ -113,7 +115,7 @@ export default function EditProfileForm() {
             type="text"
             name="fname"
             className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
-            placeholder=" Mobile"
+            placeholder="Mobile"
             autoComplete="off"
           />
         </div>
@@ -126,7 +128,7 @@ export default function EditProfileForm() {
             type="text"
             name="address"
             className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
-            placeholder=" 11Address"
+            placeholder="Address"
             autoComplete="off"
           />
         </div>

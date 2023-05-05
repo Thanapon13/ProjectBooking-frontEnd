@@ -1,8 +1,10 @@
-import profileUser from "../../assets/blank.png";
-
 import EditProfileForm from "../auth/EditProfileForm";
+import useAuth from "../../hooks/useAuth";
+import Avatar from "../../components/Avatar";
 
 export default function ProfileContainer() {
+  const { authenticateUser } = useAuth();
+  // console.log(authenticateUser, "authenticateUser");
   return (
     <>
       <div className="flex bg-[#E5E7EB] border-b-2">
@@ -10,14 +12,12 @@ export default function ProfileContainer() {
         <div className=" w-[20%] bg-white">
           <div className="flex justify-start items-center gap-10 p-2 border-b-2">
             <div>
-              <img
-                alt="img"
-                src={profileUser}
-                className="w-[80px] rounded-full"
-              />
+              <Avatar src={authenticateUser.profileImage} size="80px" />
             </div>
             <div>
-              <h1 className="font-bold text-[20px]">User Name</h1>
+              <h1 className="font-bold text-[20px]">
+                {authenticateUser.firstName} {authenticateUser.lastName}
+              </h1>
             </div>
           </div>
         </div>
@@ -29,11 +29,7 @@ export default function ProfileContainer() {
               <EditProfileForm />
             </div>
 
-            <img
-              src={profileUser}
-              alt="img"
-              className="h-40 w-40 rounded-full border-2"
-            />
+            <Avatar src={authenticateUser.profileImage} size="140px" />
             <div className="flex">
               <div className="mt-8 mx-5 space-y-3 text-md font-bold w-1/5 text-gray-600">
                 <p>First Name :</p>
@@ -44,12 +40,12 @@ export default function ProfileContainer() {
                 <p>Line Token :</p>
               </div>
               <div className="mt-8 mx-5 space-y-3 text-md text-md">
-                <p>Haruka</p>
-                <p>senpai</p>
-                <p>Email Address</p>
-                <p>Mobile</p>
-                <p>Address</p>
-                <p>Line Token</p>
+                <p>{authenticateUser.firstName || "-"}</p>
+                <p> {authenticateUser.lastName || "-"}</p>
+                <p>{authenticateUser.email || "-"}</p>
+                <p>{authenticateUser.mobile || "-"}</p>
+                <p>{authenticateUser.address || "-"}</p>
+                <p>{authenticateUser.linenotify || "-"}</p>
               </div>
             </div>
           </div>

@@ -1,9 +1,6 @@
 export default function Search() {
   return (
     <form className="flex items-center  justify-center w-6/12">
-      <label htmlFor="simple-search" className="sr-only">
-        Search
-      </label>
       <div className="w-full">
         <div className="inset-y-0 left-0 flex items-center pl-3 pointer-events-none"></div>
         <input

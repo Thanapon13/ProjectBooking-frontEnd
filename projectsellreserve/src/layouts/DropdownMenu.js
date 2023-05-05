@@ -1,5 +1,4 @@
 import "flowbite";
-import profile from "../assets/blank.png";
 import { BiMenu } from "react-icons/bi";
 import { useState } from "react";
 import { AiFillEdit, AiOutlineLogin } from "react-icons/ai";
@@ -11,11 +10,13 @@ import useAuth from "../hooks/useAuth";
 import Modal from "../components/Modal";
 import RegisterForm from "../features/auth/RegisterForm";
 import LoginForm from "../features/auth/LoginForm";
+import Avatar from "../components/Avatar";
 
 export default function DropdownMenu() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRejister, setOpenRejister] = useState(false);
   const { authenticateUser, logout } = useAuth();
+
   return (
     <>
       <div className="flex items-center border-2 justify-between p-1 rounded-[50px] w-[100px] md:order-2 ">
@@ -31,13 +32,9 @@ export default function DropdownMenu() {
           data-dropdown-placement="bottom"
         >
           {authenticateUser ? (
-            <img
-              className="w-8 h-8 rounded-full"
-              src="https://1417094351.rsc.cdn77.org/articles/8850/8849289/thumbnail/large.gif?1"
-              alt="profile"
-            />
+            <Avatar src={authenticateUser.profileImage} size="32px" />
           ) : (
-            <img className="w-8 h-8 rounded-full" src={profile} alt="profile" />
+            <Avatar size="32px" />
           )}
         </button>
 
@@ -50,20 +47,16 @@ export default function DropdownMenu() {
           {authenticateUser ? (
             <div className="px-4 py-3">
               <span className="block text-sm text-gray-900 dark:text-white">
-                Haruka Senpai
+                {authenticateUser.firstName} {authenticateUser.lastName}
               </span>
               <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-                harukasenpais@gmail.com
+                {authenticateUser.email}
               </span>
             </div>
           ) : null}
 
           <ul className="py-2" aria-labelledby="user-menu-button">
-            <div
-              className={`${
-                authenticateUser ? "border-b-2 border-slate-100" : null
-              }`}
-            >
+            <div>
               {/* // <!-- Modal toggle --> */}
               {!authenticateUser ? (
                 <div>
@@ -99,7 +92,7 @@ export default function DropdownMenu() {
               <div>
                 <li>
                   <Link
-                    to="/profile"
+                    to={`/profile/${authenticateUser.id}`}
                     className="flex items-center gap-3 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   >
                     <i>
