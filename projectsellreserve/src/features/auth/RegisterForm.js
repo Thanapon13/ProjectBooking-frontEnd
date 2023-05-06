@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import Input from "../../components/Input";
+import InputRegister from "../../components//input/InputRegister";
 import validateRegister from "../../validators/validate-register";
 import * as authApi from "../../apis/auth-api";
 import useLoading from "../../hooks/useLoading";
@@ -60,7 +60,7 @@ export default function RegisterForm({ onClose }) {
           ชื่อ
         </label>
 
-        <Input
+        <InputRegister
           placeholder="First name"
           name="firstName"
           value={input.firstName}
@@ -76,7 +76,7 @@ export default function RegisterForm({ onClose }) {
           นามสกุล
         </label>
 
-        <Input
+        <InputRegister
           placeholder="Last name"
           name="lastName"
           value={input.lastName}
@@ -92,7 +92,7 @@ export default function RegisterForm({ onClose }) {
           อีเมล
         </label>
 
-        <Input
+        <InputRegister
           placeholder="Email"
           name="email"
           value={input.email}
@@ -108,7 +108,7 @@ export default function RegisterForm({ onClose }) {
           รหัสผ่าน
         </label>
 
-        <Input
+        <InputRegister
           type="password"
           placeholder="Password"
           name="password"
@@ -125,7 +125,7 @@ export default function RegisterForm({ onClose }) {
           ยืนยันรหัสผ่าน
         </label>
 
-        <Input
+        <InputRegister
           type="password"
           placeholder="Confirm Password"
           name="confirmPassword"

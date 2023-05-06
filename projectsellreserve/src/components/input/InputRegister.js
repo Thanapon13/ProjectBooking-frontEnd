@@ -1,6 +1,6 @@
 import "flowbite";
 
-export default function Input({
+export default function InputRegister({
   type,
   placeholder,
   name,

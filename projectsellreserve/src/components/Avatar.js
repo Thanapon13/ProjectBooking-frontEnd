@@ -1,5 +1,5 @@
 import profileImage from "../assets/blank.png";
-export default function Avatar({ src, size }) {
+export default function Avatar({ src, size, onClick }) {
   return (
     <img
       src={src || profileImage}
@@ -7,6 +7,7 @@ export default function Avatar({ src, size }) {
       alt="user"
       width={size}
       height={size}
+      onClick={onClick}
     />
   );
 }

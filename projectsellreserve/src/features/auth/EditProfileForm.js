@@ -1,8 +1,19 @@
 import "flowbite";
-import profileUser from "../../assets/blank.png";
 import { AiFillEdit } from "react-icons/ai";
+import { useRef, useState } from "react";
+import useAuth from "../../hooks/useAuth";
+import Avatar from "../../components/Avatar";
+import InputEditProfile from "../../components/input/InputEditProfile";
 
 export default function EditProfileForm() {
+  const {
+    authenticateUser: { profileImage }
+  } = useAuth();
+
+  const [file, setFile] = useState(null);
+
+  const inputEl = useRef();
+
   return (
     <div>
       <div className="text-center">
@@ -50,20 +61,31 @@ export default function EditProfileForm() {
           <span className="sr-only">Close menu</span>
         </button>
 
-        <div className="text-center mt-5 mx-5">
-          <button className="flex justify-around">
-            <img
-              src={profileUser}
-              alt="img"
-              className="m-auto h-20 w-20 rounded-full border text-gray-600"
-            />
+        <div className="mt-5 mx-5 flex flex-col justify-center items-center gap-3">
+          <Avatar
+            src={file ? URL.createObjectURL(file) : profileImage}
+            size={"120"}
+            onClick={() => inputEl.current.click()}
+          />
 
-            {/* <Avatar src={authenticateUser.profileImage} size="80px" /> */}
+          <button
+            className="py-1.5 px-4 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-black rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            onClick={() => inputEl.current.click()}
+          >
+            <p>เลือกไฟล์</p>
+
             <input
               type="file"
-              className="text-xs text-grey-500
-              hover:file:cursor-pointer hover:file:bg-grey-300
-              hover:file:text-blue-500 m-auto w-1/2"
+              ref={inputEl}
+              className="hidden"
+              onChange={e => {
+                // console.dir(e.target, "aa");
+                if (e.target.files[0]) {
+                  setFile(e.target.files[0]);
+                }
+              }}
+              // multiple สามารถ input file ได้หลายอันใน 1 input
+              // multiple
             />
           </button>
         </div>
@@ -72,23 +94,21 @@ export default function EditProfileForm() {
           <label htmlFor="fname" className="block text-xs text-gray-900">
             First Name
           </label>
-          <input
-            type="text"
+
+          <InputEditProfile
             name="fname"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
             placeholder="FirstName"
             autoComplete="off"
           />
         </div>
 
         <div className="flex flex-col gap-2 py-4 px-8">
-          <label htmlFor="fname" className="block text-xs text-gray-900">
+          <label htmlFor="lname" className="block text-xs text-gray-900">
             Last Name
           </label>
-          <input
-            type="text"
-            name="fname"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
+
+          <InputEditProfile
+            name="lname"
             placeholder="LastName"
             autoComplete="off"
           />
@@ -98,10 +118,8 @@ export default function EditProfileForm() {
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Email Address
           </label>
-          <input
-            type="text"
+          <InputEditProfile
             name="emailaddress"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
             placeholder="EmailAddress"
             autoComplete="off"
           />
@@ -111,10 +129,9 @@ export default function EditProfileForm() {
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Mobile
           </label>
-          <input
-            type="text"
-            name="fname"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
+
+          <InputEditProfile
+            name="mobile"
             placeholder="Mobile"
             autoComplete="off"
           />
@@ -124,10 +141,9 @@ export default function EditProfileForm() {
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Address
           </label>
-          <input
-            type="text"
+
+          <InputEditProfile
             name="address"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
             placeholder="Address"
             autoComplete="off"
           />
@@ -137,21 +153,28 @@ export default function EditProfileForm() {
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Line Token
           </label>
-          <input
-            type="text"
-            name="address"
-            className=" block w-full bg-gray-100 text-gray-900 text-xs border-none"
-            placeholder=" linetoken"
+
+          <InputEditProfile
+            name="lineToken"
+            placeholder="LineToken"
             autoComplete="off"
           />
         </div>
 
         <div className="flex justify-center">
-          <button className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white">
+          <button
+            type="button"
+            className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white"
+          >
             save
           </button>
           <button
             type="button"
+            // data-drawer-hide="drawer-right-example"
+            onClick={() => {
+              setFile(null);
+              inputEl.current.value = null;
+            }}
             className="bg-gray-400 hover:bg-gray-300 px-3 py-1 text-sm text-white"
           >
             cancel

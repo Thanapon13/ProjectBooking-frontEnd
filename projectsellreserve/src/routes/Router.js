@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       {
-        path: "/profile/:userId",
+        path: "/profile",
         element: (
           <ProtectedRout>
             <ProfilePage />
