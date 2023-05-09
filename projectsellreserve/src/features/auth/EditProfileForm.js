@@ -1,73 +1,112 @@
 import "flowbite";
+import { Button, Drawer } from "antd";
 import { AiFillEdit } from "react-icons/ai";
 import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Avatar from "../../components/Avatar";
 import InputEditProfile from "../../components/input/InputEditProfile";
+import * as userApi from "../../apis/user-api";
+import useLoading from "../../hooks/useLoading";
+import { toast } from "react-toastify";
+import validateEditProfile from "../../validators/validate-editProfile";
 
 export default function EditProfileForm() {
   const {
-    authenticateUser: { profileImage }
+    authenticateUser: { profileImage },
+    updateProfile
   } = useAuth();
 
+  const { startLoading, stopLoading } = useLoading();
+  const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
+  const [error, setError] = useState({});
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [lineToken, setLineToken] = useState("");
 
   const inputEl = useRef();
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+
+  const input = {
+    firstName: fname,
+    lastName: lname,
+    email: email,
+    address: address,
+    mobile: mobile,
+    lineToken: lineToken
+  };
+
+  const handleClickSave = async () => {
+    try {
+      startLoading();
+      const result = validateEditProfile(input);
+      // console.log(result, "result------------------------");
+
+      if (result) {
+        setError(result);
+      } else {
+        console.log("no error");
+        setError({});
+      }
+
+      const formData = new FormData();
+      formData.append("profileImage", file);
+      await updateProfile(formData);
+
+      toast.success("successfully updated!");
+      stopLoading();
+      setFile(null);
+      // setOpen(false);
+      // navigate(0);
+    } catch (err) {
+      console.log(err.response?.data.message);
+      toast.error("Failed to update");
+    }
+  };
+
+  const handleChangeFname = async e => {
+    setFname(e.target.value);
+  };
 
   return (
     <div>
       <div className="text-center">
-        <button
+        <Button
           className="flex justify-end items-end"
           type="button"
-          data-drawer-target="drawer-right-example"
-          data-drawer-show="drawer-right-example"
-          data-drawer-placement="right"
-          aria-controls="drawer-right-example"
+          onClick={showDrawer}
         >
           <p className="text-xl pr-1 text-gray-600">Edit</p>
           <i className="text-xl text-gray-600">
             <AiFillEdit />{" "}
           </i>
-        </button>
+        </Button>
       </div>
 
       {/* <!-- drawer component --> */}
-      <div
-        id="drawer-right-example"
-        className="fixed top-0 right-0 z-40 w-[500px] h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
-        tabIndex="-1"
-        aria-labelledby="drawer-right-label"
-      >
-        <button
-          type="button"
-          data-drawer-hide="drawer-right-example"
-          aria-controls="drawer-right-example"
-          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-        >
-          <svg
-            aria-hidden="true"
-            className="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-          <span className="sr-only">Close menu</span>
-        </button>
 
+      <Drawer
+        title="Edit Profile"
+        placement="right"
+        width={550}
+        onClose={onClose}
+        open={open}
+      >
         <div className="mt-5 mx-5 flex flex-col justify-center items-center gap-3">
           <Avatar
             src={file ? URL.createObjectURL(file) : profileImage}
             size={"120"}
             onClick={() => inputEl.current.click()}
           />
-
           <button
             className="py-1.5 px-4 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-black rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700  dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             onClick={() => inputEl.current.click()}
@@ -99,6 +138,8 @@ export default function EditProfileForm() {
             name="fname"
             placeholder="FirstName"
             autoComplete="off"
+            onChange={e => handleChangeFname(e)}
+            error={error.firstName}
           />
         </div>
 
@@ -161,26 +202,28 @@ export default function EditProfileForm() {
           />
         </div>
 
-        <div className="flex justify-center">
-          <button
-            type="button"
-            className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white"
-          >
-            save
-          </button>
-          <button
-            type="button"
-            // data-drawer-hide="drawer-right-example"
-            onClick={() => {
-              setFile(null);
-              inputEl.current.value = null;
-            }}
-            className="bg-gray-400 hover:bg-gray-300 px-3 py-1 text-sm text-white"
-          >
-            cancel
-          </button>
-        </div>
-      </div>
+        {file && (
+          <div className="flex justify-center">
+            <button
+              type="button"
+              className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white"
+              onClick={handleClickSave}
+            >
+              save
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setFile(null);
+                inputEl.current.value = null;
+              }}
+              className="bg-gray-400 hover:bg-gray-300 px-3 py-1 text-sm text-white"
+            >
+              cancel
+            </button>
+          </div>
+        )}
+      </Drawer>
     </div>
   );
 }

@@ -5,7 +5,8 @@ export default function InputEditProfile({
   placeholder,
   name,
   onChange,
-  autoComplete
+  autoComplete,
+  error
 }) {
   return (
     <>
@@ -17,6 +18,7 @@ export default function InputEditProfile({
         onChange={onChange}
         autoComplete={autoComplete}
       />
+      {error && <div className="text-red-600 text-[12px]">{error}</div>}
     </>
   );
 }

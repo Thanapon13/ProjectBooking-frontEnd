@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import * as authApi from "../apis/auth-api";
+import * as userApi from "../apis/user-api";
+
 import {
   getAccessToken,
   removeAccessToken,
@@ -40,8 +42,15 @@ export default function AuthContextProvider({ children }) {
     setAuthenticatedUser(null);
   };
 
+  const updateProfile = async data => {
+    const res = await userApi.updateProfile(data);
+    setAuthenticatedUser({ ...authenticateUser, ...res.data });
+  };
+
   return (
-    <AuthContext.Provider value={{ authenticateUser, login, logout }}>
+    <AuthContext.Provider
+      value={{ authenticateUser, login, logout, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );

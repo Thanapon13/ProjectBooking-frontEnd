@@ -22,7 +22,7 @@ export default function ProfileContainer() {
         <div className=" w-[20%] bg-white">
           <div className="flex justify-start items-center gap-10 p-2 border-b-2">
             <div>
-              <Avatar src={profileImage} size="80px" />
+              <Avatar src={profileImage} size="80" />
             </div>
             <div>
               <h1 className="font-bold text-[20px]">

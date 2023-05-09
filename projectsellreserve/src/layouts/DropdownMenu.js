@@ -15,11 +15,7 @@ import Avatar from "../components/Avatar";
 export default function DropdownMenu() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRejister, setOpenRejister] = useState(false);
-  const {
-    authenticateUser: { profileImage, firstName, lastName, email },
-    logout,
-    authenticateUser
-  } = useAuth();
+  const { logout, authenticateUser } = useAuth();
 
   return (
     <>
@@ -36,7 +32,7 @@ export default function DropdownMenu() {
           data-dropdown-placement="bottom"
         >
           {authenticateUser ? (
-            <Avatar src={profileImage} size="32px" />
+            <Avatar src={authenticateUser.profileImage} size="32px" />
           ) : (
             <Avatar size="32px" />
           )}
@@ -51,10 +47,10 @@ export default function DropdownMenu() {
           {authenticateUser ? (
             <div className="px-4 py-3">
               <span className="block text-sm text-gray-900 dark:text-white">
-                {firstName} {lastName}
+                {authenticateUser.firstName} {authenticateUser.lastName}
               </span>
               <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-                {email}
+                {authenticateUser.email}
               </span>
             </div>
           ) : null}
