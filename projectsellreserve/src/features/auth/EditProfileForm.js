@@ -4,18 +4,16 @@ import { AiFillEdit } from "react-icons/ai";
 import { useRef, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import Avatar from "../../components/Avatar";
-import InputEditProfile from "../../components/input/InputEditProfile";
 import * as userApi from "../../apis/user-api";
+import InputEditProfile from "../../components/input/InputEditProfile";
 import useLoading from "../../hooks/useLoading";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import validateEditProfile from "../../validators/validate-editProfile";
 
 export default function EditProfileForm() {
-  const {
-    authenticateUser: { profileImage },
-    updateProfile
-  } = useAuth();
-
+  const { authenticateUser, updateProfile } = useAuth();
+  const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -26,7 +24,6 @@ export default function EditProfileForm() {
   const [address, setAddress] = useState("");
   const [mobile, setMobile] = useState("");
   const [lineToken, setLineToken] = useState("");
-
   const inputEl = useRef();
 
   const showDrawer = () => {
@@ -42,15 +39,15 @@ export default function EditProfileForm() {
     email: email,
     address: address,
     mobile: mobile,
-    lineToken: lineToken
+    linenotify: lineToken
   };
+  console.log(error, "err");
 
   const handleClickSave = async () => {
     try {
       startLoading();
       const result = validateEditProfile(input);
       // console.log(result, "result------------------------");
-
       if (result) {
         setError(result);
       } else {
@@ -62,10 +59,12 @@ export default function EditProfileForm() {
       formData.append("profileImage", file);
       await updateProfile(formData);
 
+      await userApi.updateUserInfo(input);
+
       toast.success("successfully updated!");
       stopLoading();
       setFile(null);
-      // setOpen(false);
+      setOpen(false);
       // navigate(0);
     } catch (err) {
       console.log(err.response?.data.message);
@@ -75,6 +74,21 @@ export default function EditProfileForm() {
 
   const handleChangeFname = async e => {
     setFname(e.target.value);
+  };
+  const handleChangeLname = async e => {
+    setLname(e.target.value);
+  };
+  const handleChangeEmail = async e => {
+    setEmail(e.target.value);
+  };
+  const handleChangeAddress = async e => {
+    setAddress(e.target.value);
+  };
+  const handleChangeMobile = async e => {
+    setMobile(e.target.value);
+  };
+  const handleChangeLineToken = async e => {
+    setLineToken(e.target.value);
   };
 
   return (
@@ -103,7 +117,9 @@ export default function EditProfileForm() {
       >
         <div className="mt-5 mx-5 flex flex-col justify-center items-center gap-3">
           <Avatar
-            src={file ? URL.createObjectURL(file) : profileImage}
+            src={
+              file ? URL.createObjectURL(file) : authenticateUser.profileImage
+            }
             size={"120"}
             onClick={() => inputEl.current.click()}
           />
@@ -128,7 +144,6 @@ export default function EditProfileForm() {
             />
           </button>
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
             First Name
@@ -142,7 +157,6 @@ export default function EditProfileForm() {
             error={error.firstName}
           />
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="lname" className="block text-xs text-gray-900">
             Last Name
@@ -150,22 +164,24 @@ export default function EditProfileForm() {
 
           <InputEditProfile
             name="lname"
+            onChange={e => handleChangeLname(e)}
             placeholder="LastName"
             autoComplete="off"
+            error={error.lastName}
           />
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Email Address
           </label>
           <InputEditProfile
             name="emailaddress"
+            onChange={e => handleChangeEmail(e)}
             placeholder="EmailAddress"
             autoComplete="off"
+            error={error.email}
           />
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Mobile
@@ -173,11 +189,12 @@ export default function EditProfileForm() {
 
           <InputEditProfile
             name="mobile"
+            onChange={e => handleChangeMobile(e)}
             placeholder="Mobile"
             autoComplete="off"
+            error={error.mobile}
           />
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Address
@@ -185,11 +202,12 @@ export default function EditProfileForm() {
 
           <InputEditProfile
             name="address"
+            onChange={e => handleChangeAddress(e)}
             placeholder="Address"
             autoComplete="off"
+            error={error.address}
           />
         </div>
-
         <div className="flex flex-col gap-2 py-4 px-8">
           <label htmlFor="fname" className="block text-xs text-gray-900">
             Line Token
@@ -197,32 +215,33 @@ export default function EditProfileForm() {
 
           <InputEditProfile
             name="lineToken"
+            onChange={e => handleChangeLineToken(e)}
             placeholder="LineToken"
             autoComplete="off"
+            error={error.linenotify}
           />
         </div>
-
-        {file && (
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white"
-              onClick={handleClickSave}
-            >
-              save
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setFile(null);
-                inputEl.current.value = null;
-              }}
-              className="bg-gray-400 hover:bg-gray-300 px-3 py-1 text-sm text-white"
-            >
-              cancel
-            </button>
-          </div>
-        )}
+        {/* {file && ( */}
+        <div className="flex justify-center">
+          <button
+            type="button"
+            className="bg-green-600 hover:bg-green-500 px-4 py-2 mr-3 text-sm text-white"
+            onClick={handleClickSave}
+          >
+            save
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setFile(null);
+              inputEl.current.value = null;
+            }}
+            className="bg-gray-400 hover:bg-gray-300 px-3 py-1 text-sm text-white"
+          >
+            cancel
+          </button>
+        </div>
+        {/* )} */}
       </Drawer>
     </div>
   );
