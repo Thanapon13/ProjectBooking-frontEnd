@@ -2,12 +2,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
 import Layout from "../layouts/layout";
-import ProfilePage from "../pages/ProfilePage";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
 import PaymentBooking from "../pages/PaymentBooking";
 import OrderHistory from "../pages/OrderHistoryPage";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProtectedRout from "../features/auth/ProtectedRout";
+import ProfilePage from "../pages/profile/ProfilePage";
+import RegisterProductPage from "../pages/RegisterProductPage ";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,15 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRout>
             <OrderHistory />
+          </ProtectedRout>
+        )
+      },
+
+      {
+        path: "/registerproductPage",
+        element: (
+          <ProtectedRout>
+            <RegisterProductPage />
           </ProtectedRout>
         )
       }

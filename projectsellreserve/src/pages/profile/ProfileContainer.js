@@ -1,6 +1,6 @@
-import EditProfileForm from "../auth/EditProfileForm";
 import useAuth from "../../hooks/useAuth";
 import Avatar from "../../components/Avatar";
+import EditProfileForm from "../../features/auth/EditProfileForm";
 
 export default function ProfileContainer() {
   const {
@@ -18,22 +18,7 @@ export default function ProfileContainer() {
   return (
     <>
       <div className="flex bg-[#E5E7EB] border-b-2">
-        {/* Left */}
-        <div className=" w-[20%] bg-white">
-          <div className="flex justify-start items-center gap-10 p-2 border-b-2">
-            <div>
-              <Avatar src={profileImage} size="80" />
-            </div>
-            <div>
-              <h1 className="font-bold text-[20px]">
-                {firstName} {lastName}
-              </h1>
-            </div>
-          </div>
-        </div>
-
-        {/* Right */}
-        <div className="w-[60%] m-auto">
+        <div className="w-[80%] m-auto">
           <div className="bg-white m-10 p-10">
             <div className="flex justify-end items-end">
               <EditProfileForm />

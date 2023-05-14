@@ -4,28 +4,25 @@ export default function OrderHistoryContainer() {
   return (
     <div className="h-full flex bg-[#E5E7EB] border-b-2">
       {/* Left */}
-      <div className="w-[20%]  bg-white">
+      <div className="w-[20%] bg-white">
         <nav>
-          <button className="flex items-center justify-center py-5 shadow-sm hover:bg-gray-100">
+          <button className="w-full flex items-center justify-center py-5 shadow-sm hover:bg-gray-100">
             <h1 className="text-m text-gray-600">ดูทั้งหมด</h1>
           </button>
 
-          <button className="flex items-center justify-center py-5 shadow-sm hover:bg-gray-100">
+          <button className="w-full flex items-center justify-center py-5 shadow-sm hover:bg-gray-100">
             <i className="text-m pr-2 text-gray-600">
               <AiOutlineHistory />
             </i>
             <h1 className="text-m text-gray-600">การซื้อของคุณ</h1>
           </button>
 
-          <a
-            href="#"
-            className="flex items-center justify-center py-5 shadow-sm hover:bg-gray-100"
-          >
+          <button className="w-full flex items-center justify-center py-5 shadow-sm hover:bg-gray-100">
             <i className="text-m pr-2 text-gray-600">
               <AiOutlineHistory />
             </i>
             <h1 className="text-m text-gray-600">การจองของคุณ</h1>
-          </a>
+          </button>
         </nav>
       </div>
 

@@ -8,12 +8,12 @@ import * as userApi from "../../apis/user-api";
 import InputEditProfile from "../../components/input/InputEditProfile";
 import useLoading from "../../hooks/useLoading";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import validateEditProfile from "../../validators/validate-editProfile";
 
 export default function EditProfileForm() {
   const { authenticateUser, updateProfile } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
