@@ -13,15 +13,15 @@ export default function UploadFileRoomImage() {
           console.log({ file }, "file");
           return true;
         }}
-        defaultFileList={[
-          {
-            uid: "adc",
-            name: "exising_file.png",
-            status: "uploading",
-            percent: 50
-            // url: "https://www.google.com"
-          }
-        ]}
+        // defaultFileList={[
+        //   {
+        //     uid: "adc",
+        //     name: "exising_file.png",
+        //     status: "uploading",
+        //     percent: 50
+        //     // url: "https://www.google.com"
+        //   }
+        // ]}
         iconRender={() => {
           return <Spin></Spin>;
         }}

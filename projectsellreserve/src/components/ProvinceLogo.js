@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
-import * as provinceApi from "../apis/province-api";
+import useProvince from "../hooks/useProvince";
 
 export default function ProvinceLogo() {
-  const [province, setProvince] = useState([]);
+  const { province } = useProvince();
 
-  useEffect(() => {
-    const fetchProvinceLogo = async () => {
-      const res = await provinceApi.getProvince();
-      setProvince(res.data.provinces);
-      console.log(res.data, "res.data.province");
-    };
-    fetchProvinceLogo();
-  }, []);
-
+  // console.log(province, "----------------");
   return (
     <div className=" p-2 flex flex-col justify-center gap-10 ">
       <div className="flex justify-center items-center ">

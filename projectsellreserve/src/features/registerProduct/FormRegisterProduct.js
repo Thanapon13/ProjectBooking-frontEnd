@@ -1,3 +1,5 @@
+import LabelRegisterProduct from "../../components/LabelRegisterProduct";
+import InputRegisterProduct from "../../components/input/inputRegisterProduct";
 import UploadFileRoomImage from "./UploadFileRoomImage";
 
 export default function FormRegisterProduct() {
@@ -6,108 +8,84 @@ export default function FormRegisterProduct() {
       <div className="bg-white w-[50%]">
         <form className="p-10 flex flex-col gap-2">
           {/* upload file */}
-          <div>
+          <div className="mb-6">
             <UploadFileRoomImage />
           </div>
+
           <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="email"
-              name="floating_email"
-              id="floating_email"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            <InputRegisterProduct
+              name="floating_name"
+              id="floating_name"
               placeholder=" "
-              required
             />
-            <label
-              htmlFor="floating_email"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
+
+            <LabelRegisterProduct htmlFor="floating_name">
+              {" "}
               ขื่อห้อง
-            </label>
+            </LabelRegisterProduct>
           </div>
           <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="password"
-              name="floating_password"
-              id="floating_password"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            <InputRegisterProduct
+              name="floating_price"
+              id="floating_price"
               placeholder=" "
-              required
             />
-            <label
-              htmlFor="floating_password"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
+
+            <LabelRegisterProduct htmlFor="floating_price">
+              {" "}
               ราคา
-            </label>
+            </LabelRegisterProduct>
           </div>
           <div class="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
+            <InputRegisterProduct
               name="repeat_password"
               id="floating_repeat_password"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
-              required
             />
-            <label
-              htmlFor="floating_repeat_password"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
+
+            <LabelRegisterProduct htmlFor="floating_repeat_password">
+              {" "}
               ที่อยู่
-            </label>
+            </LabelRegisterProduct>
           </div>
+
+          <div className="relative z-0 w-full mb-6 group">
+            <InputRegisterProduct
+              name="floating_first_name"
+              id="floating_first_name"
+              placeholder=" "
+            />
+
+            <LabelRegisterProduct htmlFor="floating_first_name">
+              {" "}
+              คำอธิบาย
+            </LabelRegisterProduct>
+          </div>
+
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-6 group">
-              <input
-                type="text"
-                name="floating_first_name"
-                id="floating_first_name"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_first_name"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                คำอธิบาย
-              </label>
-            </div>
-            <div className="relative z-0 w-full mb-6 group">
-              <input
-                type="text"
-                name="floating_last_name"
-                id="floating_last_name"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                required
-              />
-              <label
-                htmlFor="floating_last_name"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
-                จังหวัด
-              </label>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="relative z-0 w-full mb-6 group">
-              <input
-                type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              <InputRegisterProduct
                 name="floating_phone"
                 id="floating_phone"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                required
               />
-              <label
-                htmlFor="floating_phone"
-                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >
+
+              <LabelRegisterProduct htmlFor="floating_phone">
+                {" "}
                 ประะภทของห้อง
-              </label>
+              </LabelRegisterProduct>
+            </div>
+            <div className="relative z-0 w-full mb-6 group">
+              <InputRegisterProduct
+                name="floating_last_name"
+                id="floating_last_name"
+                placeholder=" "
+              />
+
+              <LabelRegisterProduct htmlFor="floating_last_name">
+                {" "}
+                จังหวัด
+              </LabelRegisterProduct>
             </div>
           </div>
 
