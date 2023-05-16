@@ -21,6 +21,7 @@ export default function GalleryRoom() {
           {/* Image Left */}
           <div className=" rounded-s-3xl">
             <img
+              alt="img"
               className="w-[600px] h-[382px] rounded-l-xl"
               src={el.galleryRooms1}
             ></img>
@@ -29,17 +30,27 @@ export default function GalleryRoom() {
           <div className="flex gap-3">
             {/* Right box 1 */}
             <div className="flex flex-col gap-3 ">
-              <img className="w-[300px] h-[185px]" src={el.galleryRooms2}></img>
-              <img className="w-[300px] h-[185px]" src={el.galleryRooms3}></img>
+              <img
+                alt="img"
+                className="w-[300px] h-[185px]"
+                src={el.galleryRooms2}
+              ></img>
+              <img
+                alt="img"
+                className="w-[300px] h-[185px]"
+                src={el.galleryRooms3}
+              ></img>
             </div>
 
             {/* Right box 2 */}
             <div className="flex flex-col gap-3 ">
               <img
+                alt="img"
                 className="w-[300px] h-[185px] rounded-t-xl"
                 src={el.galleryRooms4}
               ></img>
               <img
+                alt="img"
                 className="w-[300px] h-[185px] rounded-br-xl"
                 src={el.galleryRooms5}
               ></img>

@@ -12,7 +12,7 @@ export default function FormRegisterProduct() {
             <UploadFileRoomImage />
           </div>
 
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <InputRegisterProduct
               name="floating_name"
               id="floating_name"
@@ -24,7 +24,7 @@ export default function FormRegisterProduct() {
               ขื่อห้อง
             </LabelRegisterProduct>
           </div>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <InputRegisterProduct
               name="floating_price"
               id="floating_price"
@@ -36,7 +36,7 @@ export default function FormRegisterProduct() {
               ราคา
             </LabelRegisterProduct>
           </div>
-          <div class="relative z-0 w-full mb-6 group">
+          <div className="relative z-0 w-full mb-6 group">
             <InputRegisterProduct
               name="repeat_password"
               id="floating_repeat_password"

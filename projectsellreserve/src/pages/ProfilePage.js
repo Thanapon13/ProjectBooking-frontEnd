@@ -1,8 +1,8 @@
-import useAuth from "../../hooks/useAuth";
-import Avatar from "../../components/Avatar";
-import EditProfileForm from "../../features/auth/EditProfileForm";
+import useAuth from "../hooks/useAuth";
+import Avatar from "../components/Avatar";
+import EditProfileForm from "../features/auth/EditProfileForm";
 
-export default function ProfileContainer() {
+export default function ProfilePage() {
   const {
     authenticateUser: {
       profileImage,

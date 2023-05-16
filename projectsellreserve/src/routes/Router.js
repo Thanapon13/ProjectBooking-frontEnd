@@ -7,8 +7,8 @@ import PaymentBooking from "../pages/PaymentBooking";
 import OrderHistory from "../pages/OrderHistoryPage";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProtectedRout from "../features/auth/ProtectedRout";
-import ProfilePage from "../pages/profile/ProfilePage";
 import RegisterProductPage from "../pages/RegisterProductPage ";
+import ProfilePage from "../pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
