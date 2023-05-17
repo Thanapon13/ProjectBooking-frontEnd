@@ -7,6 +7,7 @@ import useProduct from "../../hooks/useProduct";
 export default function CardProduct() {
   const { product } = useProduct();
   console.log(product);
+
   const [currentIndices, setCurrentIndices] = useState(
     Array(product.length).fill(0)
   );
@@ -82,13 +83,13 @@ export default function CardProduct() {
                 </div>
               </div>
             </div>
-            <div className="text-[14px]">
-              <Link to="/productroompage" target="_blank">
+            <div className="text-[14px] max-w-[280px]">
+              <Link to={`/productroompage/${el.id}`} target="_blank">
                 <h1 className="font-bold text-[18px]">{el.title}</h1>
-                <p>{el.address}</p>
+                <p className="line-clamp-3">{el.address}</p>
                 <p>ราคาเริ่มต้น (ต่อคืน)</p>
                 <p>{el.price}</p>
-                <p>ประเภท: {el.categori}</p>
+                <p>ประเภท: {el.Category.typeProduct}</p>
               </Link>
             </div>
           </div>

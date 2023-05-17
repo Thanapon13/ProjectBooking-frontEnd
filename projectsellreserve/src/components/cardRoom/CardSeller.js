@@ -1,6 +1,6 @@
 export default function CardSeller() {
   return (
-    <div className="w-4/5">
+    <div>
       <div className="border-2 p-4 rounded-xl bg-white shadow-lg shadow-indigo-500/40">
         <div className="flex gap-2 justify-start items-center mb-2">
           <h1 className="text-[18px]">

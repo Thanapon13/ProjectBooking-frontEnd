@@ -7,13 +7,13 @@ const { RangePicker } = DatePicker;
 
 export default function CardReserve() {
   const [dates, setDates] = useState([]);
-  console.log(dates, "dates-------------");
+  // console.log(dates, "dates-------------");
 
   return (
-    <div className="w-4/5">
+    <div>
       <div className="border-2 p-4 rounded-xl bg-white shadow-lg shadow-indigo-500/40">
         <div className="flex gap-2 justify-start items-center mb-2">
-          <h1 className="text-[18px]">Calendar</h1>
+          <h1 className="text-[18px]">฿21,018 คืน</h1>
         </div>
 
         <div className="text-center">
@@ -34,7 +34,6 @@ export default function CardReserve() {
         <a href="/paymentbooking">
           <button
             type="button"
-            // onClick={openModalLogin}
             className="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm p-4 text-center mr-2 mb-2 mt-5"
           >
             <p className="text-[20px]">จอง</p>
