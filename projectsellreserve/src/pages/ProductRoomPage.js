@@ -3,18 +3,21 @@ import UserImage from "../assets/blank.png";
 import { useState } from "react";
 import LearnMore from "../components/ModalLearnMore";
 import CardReserve from "../components/cardRoom/CardReserve";
-import CardSeller from "../components/cardRoom/CardSeller";
 import useProduct from "../hooks/useProduct";
 import { useParams } from "react-router-dom";
 import GalleryRoom from "../features/GalleryRoom";
+import CardButton from "../components/CardButton";
+import Buttons from "../components/Buttons";
+import useAuth from "../hooks/useAuth";
+import Modal from "../components/Modal";
+import LoginForm from "../features/auth/LoginForm";
 
 export default function ProductRoomPage() {
   const { roomId } = useParams();
   const { product } = useProduct();
+  const { authenticateUser } = useAuth();
 
-  // console.log("roomId:", roomId);
-  // console.log("product:", product);
-
+  const [openLogin, setOpenLogin] = useState(false);
   const [ModalLearnMore, setModalLearnMore] = useState(false);
 
   const toggleModal = async () => {
@@ -30,34 +33,51 @@ export default function ProductRoomPage() {
     return <div>ไม่พบสินค้าที่คุณเลือก</div>;
   }
 
+  const handleAddToCart = () => {
+    if (authenticateUser) {
+    } else {
+      setOpenLogin(true);
+    }
+  };
+  const handleAddToCardReserve = () => {
+    if (authenticateUser) {
+      window.location.href = "/paymentbooking";
+    } else {
+      setOpenLogin(true);
+    }
+  };
+
   return (
     <div>
+      {/* Container All */}
       <div className="w-[80%] m-auto flex flex-col gap-10 mt-5">
+        {/* Container ALL 1 */}
         <div className="flex flex-col justify-center items-start gap-5 rounded-full">
-          {/* room title box 1 */}
           <div>
             <h1 className="font-bold text-[26px]">{selectedProduct.title}</h1>
           </div>
-
-          {/* room image box 2 */}
-
           <GalleryRoom roomId={roomId} />
         </div>
 
+        {/* Container ALll 2  */}
         <div className="flex justify-center gap-20 items-start">
-          {/* BOX LEFT CONTENT*/}
+          {/*  BOX 1 LEFT CONTENT*/}
           <div className="flex flex-col justify-center items-start gap-10 p-2 w-1/2">
+            <div className="border-b-2 pb-8">
+              <p>{selectedProduct.address}</p>
+            </div>
+
             <div className="border-b-2 pb-8">
               <p>{selectedProduct.description}</p>
             </div>
 
             {/* Modal */}
-            {ModalLearnMore && (
-              <div>
-                <LearnMore handleOnCloseLearnMore={handleOnCloseLearnMore} />
-              </div>
-            )}
             <div className="w-1/2 border-b-2 pb-8 flex flex-col justify-center items-start gap-3">
+              {ModalLearnMore && (
+                <div>
+                  <LearnMore handleOnCloseLearnMore={handleOnCloseLearnMore} />
+                </div>
+              )}
               <h1 className="font-bold text-[26px]">
                 <span className="text-red-500	">Air</span> Cover
               </h1>
@@ -73,19 +93,26 @@ export default function ProductRoomPage() {
                 ดูข้อมูลเพิ่มเติม
               </button>
             </div>
+
             <div className="w-1/2 flex border-b-2 pb-8">
               <img className="w-8 h-8 rounded-full" src={UserImage} alt="img" />
               <h1>ให้เช่าที่พักโดย : Username</h1>
             </div>
           </div>
 
-          {/* BOX RIGHT CARD-ORDER */}
+          {/*  BOX 2 RIGHT CARD-ORDER */}
           <div className="w-1/3">
             {selectedProduct.Category.typeProduct === "reserve" && (
-              <CardReserve />
+              <CardReserve onClick={handleAddToCardReserve} />
             )}
+
             {selectedProduct.Category.typeProduct === "seller" && (
-              <CardSeller />
+              <CardButton>
+                <Buttons onClick={handleAddToCart}>
+                  {" "}
+                  <p className="text-[20px]">เพิ่มลงในตะกร้า</p>
+                </Buttons>
+              </CardButton>
             )}
           </div>
         </div>
@@ -100,6 +127,14 @@ export default function ProductRoomPage() {
           <h1>ติดต่อเจ้าของที่พัก</h1>
         </div>
       </div>
+
+      <Modal
+        open={openLogin}
+        onClose={() => setOpenLogin(false)}
+        title="เข้าสู่ระบบ"
+      >
+        <LoginForm onClose={() => setOpenLogin(false)} />
+      </Modal>
     </div>
   );
 }

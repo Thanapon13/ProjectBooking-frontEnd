@@ -62,10 +62,11 @@ export default function CardProduct() {
           <div key={idx} className="flex flex-col justify-center gap-2">
             <div className="w-[280px] h-[280px] group">
               <div
+                className="w-full h-full rounded-2xl bg-center duration-500 bg-cover bg-no-repeat"
                 style={{
-                  backgroundImage: `url(${roomImages[currentImageIndex]})`
+                  backgroundImage: `url(${roomImages[currentImageIndex]})`,
+                  transitionDuration: "500ms"
                 }}
-                className="w-full h-full rounded-2xl bg-center duration-500"
               >
                 <div className="flex justify-between items-center w-[280px] h-[300px]">
                   <div className="hidden group-hover:block top-[50%] -translate-x-0 trans-y-[-5] left-5 text-2xl rounded-full p-2 bg-white/80 text-black cursor-pointer">
