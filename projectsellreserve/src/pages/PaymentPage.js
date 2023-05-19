@@ -3,13 +3,10 @@ import CardPayMentOmise from "../components/payment/CardPayMentOmise";
 import Footer from "../layouts/footer";
 import { AiOutlineLeft } from "react-icons/ai";
 import CancellationPolicy from "../components/ModalCancellationPolicy";
-export default function PaymentBooking() {
-  const cardOrder = [
-    {
-      url: "https://a0.muscache.com/im/pictures/miso/Hosting-34658120/original/160b4c17-1db0-4659-ad98-c81567b4ed6c.jpeg?im_w=1200"
-    }
-  ];
+import CardPaymentSeller from "../components/payment/CardPaymentSeller";
+import CardPaymentReserve from "../components/payment/CardPaymentReserve";
 
+export default function PaymentPage() {
   const [ModalCancellationPolicy, setModalCancellationPolicy] = useState(false);
   const toggleModal = async () => {
     setModalCancellationPolicy(!ModalCancellationPolicy);
@@ -142,49 +139,9 @@ export default function PaymentBooking() {
         </div>
         {/* ------------------------------------------------------------------- */}
         {/* Right Container */}
-        <div className="w-[50%] flex justify-center items-center">
-          <div className="border-2 w-[460px] rounded-xl p-5">
-            <div className="flex justify-start items-center gap-5  border-b-2 py-4">
-              {cardOrder.map((el, idx) => (
-                <img
-                  src={el.url}
-                  alt="img"
-                  key={idx}
-                  className="w-[124px] h-[106px] rounded"
-                />
-              ))}
-              <h1>Product Name</h1>
-            </div>
-
-            <div className="border-b-2 py-4">
-              <h1>
-                การจองนี้มี{" "}
-                <span className="text-red-500	font-bold text-xl">ari</span>{" "}
-                <span className="font-bold text-xl">cover</span> &nbsp; ปกป้อง
-              </h1>
-            </div>
-
-            <div className="flex flex-col justify-center gap-4 pt-4 border-b-2 py-4">
-              <h1 className="font-bold text-xl">รายละเอียดราคา</h1>
-
-              <div className="flex justify-between items-center">
-                <p>฿75,016 x 5 คืน</p>
-                <p>฿75,081.89</p>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center border-b-2 py-4">
-              <h1>รวม(THB)</h1>
-              <h1>฿86,746.51</h1>
-            </div>
-
-            <div className="p-4">
-              <p>
-                ที่พักนี้ต้องวางเงินประกันความเสียหายจำนวน ฿9,238.57
-                ซึ่งเจ้าของที่พักจะแยกเก็บก่อนที่คุณจะมาถึงหรือตอนเช็คอิน
-              </p>
-            </div>
-          </div>
+        <div className="w-[50%] flex flex-col justify-center items-center">
+          <CardPaymentSeller />
+          <CardPaymentReserve />
         </div>
       </div>
 

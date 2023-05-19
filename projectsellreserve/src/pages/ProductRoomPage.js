@@ -11,11 +11,14 @@ import Buttons from "../components/Buttons";
 import useAuth from "../hooks/useAuth";
 import Modal from "../components/Modal";
 import LoginForm from "../features/auth/LoginForm";
+import useCart from "../hooks/useCart";
+import { toast } from "react-toastify";
 
 export default function ProductRoomPage() {
   const { roomId } = useParams();
   const { product } = useProduct();
   const { authenticateUser } = useAuth();
+  const { handleAddcart } = useCart();
 
   const [openLogin, setOpenLogin] = useState(false);
   const [ModalLearnMore, setModalLearnMore] = useState(false);
@@ -33,15 +36,23 @@ export default function ProductRoomPage() {
     return <div>ไม่พบสินค้าที่คุณเลือก</div>;
   }
 
-  const handleAddToCart = () => {
-    if (authenticateUser) {
-    } else {
-      setOpenLogin(true);
+  const handleAddToCart = async () => {
+    try {
+      if (authenticateUser) {
+        handleAddcart(roomId);
+        toast.success("สินค้าของคุณเพิ่มไปในตะกร้าแล้ว");
+      } else {
+        setOpenLogin(true);
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response?.data.message);
     }
   };
+
   const handleAddToCardReserve = () => {
     if (authenticateUser) {
-      window.location.href = "/paymentbooking";
+      window.location.href = "/PaymentPage";
     } else {
       setOpenLogin(true);
     }

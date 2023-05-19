@@ -1,4 +1,3 @@
-import "flowbite";
 import { Button, Drawer } from "antd";
 import { AiFillEdit } from "react-icons/ai";
 import { useRef, useState } from "react";
@@ -241,7 +240,6 @@ export default function EditProfileForm() {
             cancel
           </button>
         </div>
-        {/* )} */}
       </Drawer>
     </div>
   );

@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import Layout from "../layouts/layout";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
-import PaymentBooking from "../pages/PaymentBooking";
+import PaymentPage from "../pages/PaymentPage";
 import OrderHistory from "../pages/OrderHistoryPage";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProtectedRout from "../features/auth/ProtectedRout";
@@ -59,8 +59,8 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/paymentbooking",
-    element: <PaymentBooking />
+    path: "/PaymentPage",
+    element: <PaymentPage />
   }
 ]);
 
