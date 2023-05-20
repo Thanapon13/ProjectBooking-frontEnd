@@ -55,12 +55,12 @@ const router = createBrowserRouter([
             <RegisterProductPage />
           </ProtectedRout>
         )
+      },
+      {
+        path: "/PaymentPage",
+        element: <PaymentPage />
       }
     ]
-  },
-  {
-    path: "/PaymentPage",
-    element: <PaymentPage />
   }
 ]);
 

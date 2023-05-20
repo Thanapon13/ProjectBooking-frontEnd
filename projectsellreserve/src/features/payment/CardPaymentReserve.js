@@ -1,6 +1,6 @@
-export default function CardPaymentSeller() {
+export default function CardPaymentReserve() {
   return (
-    <div className="border-2 w-[460px] rounded-xl p-5">
+    <div className="border-2 w-[460px] h-[460px] rounded-xl p-5">
       <div className="flex justify-start items-center gap-5  border-b-2 py-4">
         <img src={""} alt="img" className="w-[124px] h-[106px] rounded" />
 

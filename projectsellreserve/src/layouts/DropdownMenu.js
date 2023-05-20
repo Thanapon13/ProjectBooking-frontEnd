@@ -7,7 +7,7 @@ import { BsFillCartFill } from "react-icons/bs";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Modal from "../components/Modal";
+import Modal from "../components/modal/Modal";
 import RegisterForm from "../features/auth/RegisterForm";
 import LoginForm from "../features/auth/LoginForm";
 import Avatar from "../components/Avatar";

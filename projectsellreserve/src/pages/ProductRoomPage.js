@@ -1,7 +1,7 @@
 import "flowbite";
 import UserImage from "../assets/blank.png";
 import { useState } from "react";
-import LearnMore from "../components/ModalLearnMore";
+import LearnMore from "../components/modal/ModalLearnMore";
 import CardReserve from "../components/cardRoom/CardReserve";
 import useProduct from "../hooks/useProduct";
 import { useParams } from "react-router-dom";
@@ -9,7 +9,7 @@ import GalleryRoom from "../features/GalleryRoom";
 import CardButton from "../components/CardButton";
 import Buttons from "../components/Buttons";
 import useAuth from "../hooks/useAuth";
-import Modal from "../components/Modal";
+import Modal from "../components/modal/Modal";
 import LoginForm from "../features/auth/LoginForm";
 import useCart from "../hooks/useCart";
 import { toast } from "react-toastify";
