@@ -1,11 +1,14 @@
-export default function Modal({ open, onClose, title, children }) {
+export default function Modal({ open, onClose, title, children, style }) {
   return (
     <>
       {open && (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
           <div className="relative w-full h-full max-w-md md:h-auto">
             {/* <!-- Modal content --> */}
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div
+              className="relative bg-white rounded-lg shadow dark:bg-gray-700"
+              style={style}
+            >
               <button
                 type="button"
                 onClick={onClose}

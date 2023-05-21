@@ -1,7 +1,12 @@
 import { FaLock } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
+import SelectCardCountry from "./SelectCardCountry";
+import Modal from "../../components/modal/Modal";
+import { useState } from "react";
 
 export default function FormPayment() {
+  const [open, setOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("");
   return (
     <>
       <div className="mt-5 flex flex-col justify-center gap-4">
@@ -81,7 +86,10 @@ export default function FormPayment() {
             </label>
           </div>
 
-          <div className="flex items-center border-2 p-2 rounded-lg cursor-pointer">
+          <div
+            className="flex items-center border-2 p-2 rounded-lg cursor-pointer"
+            onClick={() => setOpen(true)}
+          >
             <div className="w-[90%]">
               <p className="text-[10px] text-gray-400">ประเทศ/ภูมิภาค</p>
               <p className="text-[16px]">ไทย</p>
@@ -95,6 +103,18 @@ export default function FormPayment() {
           </div>
         </form>
       </div>
+
+      <Modal
+        title="ประเทศ/ภูมิภาค"
+        style={{ width: "500px" }}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        <SelectCardCountry
+          setSelectedCountry={setSelectedCountry}
+          onClose={() => setOpen(false)}
+        />
+      </Modal>
     </>
   );
 }
