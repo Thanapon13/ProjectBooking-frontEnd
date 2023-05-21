@@ -3,12 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import Layout from "../layouts/layout";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
-import PaymentPage from "../pages/PaymentPage";
 import OrderHistory from "../pages/OrderHistoryPage";
 import ProductRoomPage from "../pages/ProductRoomPage";
 import ProtectedRout from "../features/auth/ProtectedRout";
 import RegisterProductPage from "../pages/RegisterProductPage ";
 import ProfilePage from "../pages/ProfilePage";
+import PaymentOrderPage from "../pages/PaymentOrderPage";
 
 const router = createBrowserRouter([
   {
@@ -57,8 +57,8 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "/PaymentPage",
-        element: <PaymentPage />
+        path: "/paymentOrderPage",
+        element: <PaymentOrderPage />
       }
     ]
   }

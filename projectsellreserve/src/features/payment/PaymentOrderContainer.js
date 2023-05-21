@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
 
-export default function PaymentContainer() {
+export default function PaymentOrderContainer() {
   const { cart } = useCart();
   const [open, setOpen] = useState(false);
 
