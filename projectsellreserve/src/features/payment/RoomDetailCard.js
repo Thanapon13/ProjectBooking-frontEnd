@@ -2,9 +2,13 @@ import useCart from "../../hooks/useCart";
 
 export default function RoomDetailCard() {
   const { cart } = useCart();
+  console.log("cart:", cart);
 
-  const totalPrice = cart.reduce((total, el) => total + el.Room.price, 0);
-  const formattedTotalPrice = Number(totalPrice).toFixed(2); // แปลงค่าเป็นตัวเลขและใช้ toFixed() เพื่อรูปแบบทศนิยม
+  const totalPrice = cart.reduce(
+    (total, el) => total + Number(el.Room.price),
+    0
+  );
+  const formattedTotalPrice = totalPrice.toFixed(2);
 
   return (
     <div className="border-2 w-[460px]  rounded-xl p-5">
@@ -13,7 +17,7 @@ export default function RoomDetailCard() {
         const firstImage =
           roomImages && roomImages.length > 0 ? roomImages[0] : null;
 
-        const price = Number(el.Room.price); // แปลงค่าเป็นตัวเลข
+        const price = Number(el.Room.price);
 
         return (
           <div key={idx}>
@@ -26,8 +30,7 @@ export default function RoomDetailCard() {
               <div className="flex flex-col gap-2">
                 <h1 className="text-xl font-bold">{el.Room.title}</h1>
                 <h1>{el.Room.address}</h1>
-                <h1>ราคา {price.toFixed(2)} บาท</h1>{" "}
-                {/* แก้ไขรูปแบบการแสดงผลราคา */}
+                <h1>ราคา {price.toFixed(2)} บาท</h1>
               </div>
             </div>
           </div>
@@ -47,13 +50,13 @@ export default function RoomDetailCard() {
 
         <div className="flex justify-between items-center">
           <p>ราคารวมทั้งสิ้น</p>
-          <p>{formattedTotalPrice}</p> {/* แก้ไขรูปแบบการแสดงผลราคารวม */}
+          <p>{formattedTotalPrice} บาท</p>
         </div>
       </div>
 
       <div className="flex justify-between items-center border-b-2 py-4">
         <h1>รวม(THB)</h1>
-        <h1>฿{formattedTotalPrice}</h1> {/* แก้ไขรูปแบบการแสดงผลราคารวม */}
+        <h1>฿{formattedTotalPrice}</h1>
       </div>
 
       <div className="p-4">

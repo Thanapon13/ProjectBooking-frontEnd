@@ -92,7 +92,7 @@ export default function FormPayment() {
           >
             <div className="w-[90%]">
               <p className="text-[10px] text-gray-400">ประเทศ/ภูมิภาค</p>
-              <p className="text-[16px]">ไทย</p>
+              <p className="text-[16px]">{selectedCountry}</p>
             </div>
 
             <div className="w-[10%]">

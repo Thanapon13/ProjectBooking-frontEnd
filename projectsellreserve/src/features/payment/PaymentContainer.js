@@ -2,7 +2,7 @@ import { BiChevronLeft } from "react-icons/bi";
 import EditBooking from "./EditBooking";
 import FormPayment from "./FormPayment";
 import Buttons from "../../components/Buttons";
-import RoomDetailCard from "./CardPaymentReserve";
+import RoomDetailCard from "./RoomDetailCard";
 import useCart from "../../hooks/useCart";
 import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
