@@ -7,19 +7,36 @@ import useCart from "../../hooks/useCart";
 import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
+import * as createOrderApi from "../../apis/order-api";
 
 export default function PaymentOrderContainer() {
   const { cart } = useCart();
+  // console.log("cart:", cart);
   const [open, setOpen] = useState(false);
+
+  const handleCreateOrder = async () => {
+    try {
+      for (const item of cart) {
+        const createOrderData = {
+          id: item.id // ใช้ item.id ในการสร้างคำสั่งซื้อสำหรับแต่ละรายการใน cart
+        };
+
+        // ส่งคำขอสร้างคำสั่งซื้อ
+        await createOrderApi.createOrder(createOrderData);
+
+        // ทำสิ่งอื่น ๆ หลังจากสร้างคำสั่งซื้อสำเร็จ
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
       <div className="flex justify-center">
         {/* Container Left */}
-
-        <div className=" w-5/12 p-2">
+        <div className="w-5/12 p-2">
           {/* Header */}
-
           <div className="flex items-center gap-6 mt-10">
             <i className="text-3xl cursor-pointer hover:rounded-full hover:bg-gray-200">
               <BiChevronLeft />
@@ -35,7 +52,7 @@ export default function PaymentOrderContainer() {
             ))}
             <FormPayment />
 
-            <div className=" mt-5  border-b-2 pb-6 flex flex-col gap-4">
+            <div className="mt-5 border-b-2 pb-6 flex flex-col gap-4">
               <h1 className="font-bold text-xl">นโยบายยกเลิกการจอง</h1>
               <div>
                 <p>
@@ -61,7 +78,10 @@ export default function PaymentOrderContainer() {
                 มีสิทธิเรียกเก็บเงินจากวิธีชำระเงินของฉัน
                 หากข้าพเจ้าเป็นผู้สร้างความเสียหาย
               </p>
-              <Buttons style={{ width: "50%", fontSize: "20px" }}>
+              <Buttons
+                style={{ width: "50%", fontSize: "20px" }}
+                onClick={() => handleCreateOrder(cart[0].id)} // แก้ไขการส่งค่า cartId
+              >
                 ยืนยันและชำระเงิน
               </Buttons>
             </div>

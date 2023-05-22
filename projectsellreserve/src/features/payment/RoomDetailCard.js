@@ -2,7 +2,7 @@ import useCart from "../../hooks/useCart";
 
 export default function RoomDetailCard() {
   const { cart } = useCart();
-  console.log("cart:", cart);
+  // console.log("cart:", cart);
 
   const totalPrice = cart.reduce(
     (total, el) => total + Number(el.Room.price),
