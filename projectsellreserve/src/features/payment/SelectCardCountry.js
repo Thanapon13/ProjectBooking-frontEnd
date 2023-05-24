@@ -1,8 +1,13 @@
-export default function SelectCardCountry({ setSelectedCountry, onClose }) {
+export default function SelectCardCountry({
+  setSelectedCountry,
+  onClose,
+  onCountryChange
+}) {
   const countries = ["คองโก", "กรีซ", "กรีนแลนด์", "ฮ่องกง", "ไทย"];
 
   const handleCountryClick = country => {
     setSelectedCountry(country);
+    onCountryChange(country);
     onClose(); // เพิ่มบรรทัดนี้เพื่อปิด Modal เมื่อเลือกประเทศแล้ว
   };
 

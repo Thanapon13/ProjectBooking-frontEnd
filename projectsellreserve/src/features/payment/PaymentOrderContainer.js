@@ -7,35 +7,56 @@ import useCart from "../../hooks/useCart";
 import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
-import * as createOrderApi from "../../apis/order-api";
+import { createOrder } from "../../apis/order-api";
+import { createPayment } from "../../apis/payment-api";
 
 export default function PaymentOrderContainer() {
   const { cart } = useCart();
   // console.log("cart:", cart);
   const [open, setOpen] = useState(false);
+  const [creditCardNumber, setCreditCardNumber] = useState("");
+  const [expirationDate, setExpirationDate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [country, setCountry] = useState("");
 
-  const handleCreateOrder = async () => {
+  const handleCreateOrderPayment = async () => {
     try {
       for (const item of cart) {
         const createOrderData = {
           id: item.id // ใช้ item.id ในการสร้างคำสั่งซื้อสำหรับแต่ละรายการใน cart
         };
-
         // ส่งคำขอสร้างคำสั่งซื้อ
-        await createOrderApi.createOrder(createOrderData);
-
-        // ทำสิ่งอื่น ๆ หลังจากสร้างคำสั่งซื้อสำเร็จ
+        await createOrder(createOrderData);
+        // console.log("orderId:", orderId);
       }
+
+      // กำหนดค่าข้อมูลการชำระเงิน
+      const paymentData = {
+        creditCardNumber: Number(creditCardNumber),
+        expirationDate: expirationDate,
+        cvv: Number(cvv),
+        zipCode: Number(zipCode),
+        country: country,
+        orderId: cart.map(item => item.id)
+      };
+
+      console.log("paymentData:", paymentData);
+      // สร้างการชำระเงิน
+      await createPayment(paymentData);
     } catch (error) {
-      console.log(error);
+      console.error(
+        "เกิดข้อผิดพลาดในการสร้างคำสั่งสร้างออเดอร์และการชำระเงิน:",
+        error
+      );
     }
   };
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-wrap	">
         {/* Container Left */}
-        <div className="w-5/12 p-2">
+        <div className="w-5/12 p-2  flex-wrap	">
           {/* Header */}
           <div className="flex items-center gap-6 mt-10">
             <i className="text-3xl cursor-pointer hover:rounded-full hover:bg-gray-200">
@@ -50,7 +71,15 @@ export default function PaymentOrderContainer() {
                 {el.Room.Category.typeProduct === "reserve" && <EditBooking />}
               </React.Fragment>
             ))}
-            <FormPayment />
+            <FormPayment
+              onCreditCardNumberChange={e =>
+                setCreditCardNumber(e.target.value)
+              }
+              onExpirationDateChange={e => setExpirationDate(e.target.value)}
+              onCvvChange={e => setCvv(e.target.value)}
+              onZipCodeChange={e => setZipCode(e.target.value)}
+              onCountryChange={setCountry}
+            />
 
             <div className="mt-5 border-b-2 pb-6 flex flex-col gap-4">
               <h1 className="font-bold text-xl">นโยบายยกเลิกการจอง</h1>
@@ -80,7 +109,7 @@ export default function PaymentOrderContainer() {
               </p>
               <Buttons
                 style={{ width: "50%", fontSize: "20px" }}
-                onClick={() => handleCreateOrder(cart[0].id)} // แก้ไขการส่งค่า cartId
+                onClick={() => handleCreateOrderPayment()}
               >
                 ยืนยันและชำระเงิน
               </Buttons>
@@ -89,7 +118,7 @@ export default function PaymentOrderContainer() {
         </div>
 
         {/* Container Right */}
-        <div className="w-5/12 flex justify-center items-center">
+        <div className="w-5/12 flex justify-center items-center ">
           <RoomDetailCard />
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function RoomDetailCard() {
   const formattedTotalPrice = totalPrice.toFixed(2);
 
   return (
-    <div className="border-2 w-[460px]  rounded-xl p-5">
+    <div className="border-2 w-[460px]  rounded-xl p-5 ">
       {cart.map((el, idx) => {
         const roomImages = JSON.parse(el.Room.roomImage);
         const firstImage =
@@ -21,7 +21,7 @@ export default function RoomDetailCard() {
 
         return (
           <div key={idx}>
-            <div className="flex justify-start items-center gap-5 border-b-2 py-4">
+            <div className="flex justify-start items-center gap-5 border-b-2 py-4 ">
               <img
                 src={firstImage}
                 alt="img"

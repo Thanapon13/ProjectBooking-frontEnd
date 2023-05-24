@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../config/axios";
 
 export const createCart = (body, roomId) => axios.post(`/carts/${roomId}`);
 export const getCart = () => axios.get("/carts/getCart");
