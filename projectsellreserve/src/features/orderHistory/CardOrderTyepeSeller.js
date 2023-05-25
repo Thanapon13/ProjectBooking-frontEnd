@@ -65,6 +65,7 @@ export default function CardOrderTyepeSeller() {
                       <h1>{paymentItem.country}</h1>
                       <h1>{paymentItem.orderId}</h1>
                     </div>
+                    ss
                   </div>
                 ))}
             </div>
