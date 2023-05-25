@@ -7,50 +7,21 @@ import useCart from "../../hooks/useCart";
 import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
-import { createOrder } from "../../apis/order-api";
-import { createPayment } from "../../apis/payment-api";
+import usePayment from "../../hooks/usePayment";
 
 export default function PaymentOrderContainer() {
   const { cart } = useCart();
   // console.log("cart:", cart);
+  const {
+    handleCreateOrderPayment,
+    setCreditCardNumber,
+    setExpirationDate,
+    setCvv,
+    setZipCode,
+    setCountry
+  } = usePayment();
+
   const [open, setOpen] = useState(false);
-  const [creditCardNumber, setCreditCardNumber] = useState("");
-  const [expirationDate, setExpirationDate] = useState("");
-  const [cvv, setCvv] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [country, setCountry] = useState("");
-
-  const handleCreateOrderPayment = async () => {
-    try {
-      for (const item of cart) {
-        const createOrderData = {
-          id: item.id // ใช้ item.id ในการสร้างคำสั่งซื้อสำหรับแต่ละรายการใน cart
-        };
-        // ส่งคำขอสร้างคำสั่งซื้อ
-        await createOrder(createOrderData);
-        // console.log("orderId:", orderId);
-      }
-
-      // กำหนดค่าข้อมูลการชำระเงิน
-      const paymentData = {
-        creditCardNumber: Number(creditCardNumber),
-        expirationDate: expirationDate,
-        cvv: Number(cvv),
-        zipCode: Number(zipCode),
-        country: country,
-        orderId: cart.map(item => item.id)
-      };
-
-      console.log("paymentData:", paymentData);
-      // สร้างการชำระเงิน
-      await createPayment(paymentData);
-    } catch (error) {
-      console.error(
-        "เกิดข้อผิดพลาดในการสร้างคำสั่งสร้างออเดอร์และการชำระเงิน:",
-        error
-      );
-    }
-  };
 
   return (
     <>

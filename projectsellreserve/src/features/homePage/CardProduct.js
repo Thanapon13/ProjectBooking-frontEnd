@@ -40,7 +40,7 @@ export default function CardProduct() {
   }, [product]);
 
   return (
-    <div className="flex flex-wrap justify-items-start gap-4 p-4">
+    <div className="flex flex-wrap justify-items-start gap-4 p-4 ">
       {product.map((el, idx) => {
         const productIndex = idx;
         const roomImages = JSON.parse(el.roomImage);
@@ -84,7 +84,7 @@ export default function CardProduct() {
                 </div>
               </div>
             </div>
-            <div className="text-[14px] max-w-[280px]">
+            <div className="text-[14px] max-w-[280px] flex flex-grow">
               <Link to={`/productroompage/${el.id}`} target="_blank">
                 <h1 className="font-bold text-[18px]">{el.title}</h1>
                 <p className="line-clamp-3">{el.address}</p>
