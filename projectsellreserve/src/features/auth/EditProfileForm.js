@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import validateEditProfile from "../../validators/validate-editProfile";
 
 export default function EditProfileForm() {
-  const { authenticateUser, updateProfile } = useAuth();
+  const { authenticateUser, userUpdateProfile } = useAuth();
   // const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
   const [open, setOpen] = useState(false);
@@ -56,7 +56,7 @@ export default function EditProfileForm() {
 
       const formData = new FormData();
       formData.append("profileImage", file);
-      await updateProfile(formData);
+      await userUpdateProfile(formData);
 
       await userApi.updateUserInfo(input);
 

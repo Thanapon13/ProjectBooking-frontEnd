@@ -52,7 +52,7 @@ export default function ProductRoomPage() {
 
   const handleAddToCardReserve = () => {
     if (authenticateUser) {
-      window.location.href = "/PaymentPage";
+      window.location.href = "/paymentOrderPage";
     } else {
       setOpenLogin(true);
     }

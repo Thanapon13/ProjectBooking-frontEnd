@@ -6,12 +6,12 @@ export default function LoginForm({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login } = useAuth();
+  const { userLogin } = useAuth();
 
   const handleSubmitForm = async e => {
     try {
       e.preventDefault();
-      await login(email, password);
+      await userLogin(email, password);
       onClose();
       toast.success("login success");
     } catch (err) {

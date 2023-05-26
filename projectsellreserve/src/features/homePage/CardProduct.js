@@ -6,7 +6,7 @@ import useProduct from "../../hooks/useProduct";
 
 export default function CardProduct() {
   const { product } = useProduct();
-  console.log(product);
+  // console.log(product);
 
   const [currentIndices, setCurrentIndices] = useState(
     Array(product.length).fill(0)

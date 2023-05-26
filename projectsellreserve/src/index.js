@@ -9,7 +9,6 @@ import LoadingContextProvider from "./contexts/LoadingContext";
 import ProvinceContextProvider from "./contexts/ProvinceContext";
 import ProductContextProvider from "./contexts/ProductContext";
 import CartContextProvider from "./contexts/CartContext";
-import OrderContextProvider from "./contexts/OrderContext";
 import PaymentContextProvider from "./contexts/PaymentContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,11 +19,9 @@ root.render(
         <ProvinceContextProvider>
           <ProductContextProvider>
             <CartContextProvider>
-              <OrderContextProvider>
-                <PaymentContextProvider>
-                  <App />
-                </PaymentContextProvider>
-              </OrderContextProvider>
+              <PaymentContextProvider>
+                <App />
+              </PaymentContextProvider>
             </CartContextProvider>
           </ProductContextProvider>
         </ProvinceContextProvider>

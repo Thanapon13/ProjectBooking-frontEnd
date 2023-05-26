@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import useCart from "../hooks/useCart";
 import { createOrder } from "../apis/order-api";
-import { createPayment, getPayment } from "../apis/payment-api";
+import { createPayment } from "../apis/payment-api";
 import useLoading from "../hooks/useLoading";
 
 export const PaymentContext = createContext();
@@ -15,7 +15,6 @@ export default function PaymentContextProvider({ children }) {
   const [cvv, setCvv] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [country, setCountry] = useState("");
-  const [getPayments, setgetPayments] = useState([]);
   // console.log("getPayments:", getPayments);
 
   // createPayment
@@ -59,16 +58,6 @@ export default function PaymentContextProvider({ children }) {
     }
   };
 
-  // getPayment
-  useEffect(() => {
-    const fetchOrder = async () => {
-      const res = await getPayment();
-      setgetPayments(res.data.getPayment);
-      // console.log(res.data.getPayment, "res.data.getPayment");
-    };
-    fetchOrder();
-  }, []);
-
   return (
     <PaymentContext.Provider
       value={{
@@ -77,8 +66,7 @@ export default function PaymentContextProvider({ children }) {
         setExpirationDate,
         setCvv,
         setZipCode,
-        setCountry,
-        getPayments
+        setCountry
       }}
     >
       {children}
