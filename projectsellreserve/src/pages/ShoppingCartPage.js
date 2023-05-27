@@ -4,8 +4,6 @@ import useCart from "../hooks/useCart";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-// ...import statements...
-
 export default function ShoppingCartPage() {
   const { cart, handleDeleteRoom } = useCart();
   const [totalPrice, setTotalPrice] = useState(0);

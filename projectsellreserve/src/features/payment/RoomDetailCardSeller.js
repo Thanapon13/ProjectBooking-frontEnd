@@ -1,6 +1,6 @@
 import useCart from "../../hooks/useCart";
 
-export default function RoomDetailCard() {
+export default function RoomDetailCardSeller() {
   const { cart } = useCart();
   // console.log("cart:", cart);
 

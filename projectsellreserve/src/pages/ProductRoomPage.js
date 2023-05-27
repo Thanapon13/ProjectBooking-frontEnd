@@ -2,7 +2,6 @@ import "flowbite";
 import UserImage from "../assets/blank.png";
 import { useState } from "react";
 import LearnMore from "../components/modal/ModalLearnMore";
-import CardReserve from "../components/cardRoom/CardReserve";
 import useProduct from "../hooks/useProduct";
 import { useParams } from "react-router-dom";
 import GalleryRoom from "../features/GalleryRoom";
@@ -13,6 +12,7 @@ import Modal from "../components/modal/Modal";
 import LoginForm from "../features/auth/LoginForm";
 import useCart from "../hooks/useCart";
 import { toast } from "react-toastify";
+import CardBooking from "../features/CardBooking";
 
 export default function ProductRoomPage() {
   const { roomId } = useParams();
@@ -114,7 +114,7 @@ export default function ProductRoomPage() {
           {/*  BOX 2 RIGHT CARD-ORDER */}
           <div className="w-1/3">
             {selectedProduct.Category.typeProduct === "reserve" && (
-              <CardReserve onClick={handleAddToCardReserve} />
+              <CardBooking onClick={handleAddToCardReserve} />
             )}
 
             {selectedProduct.Category.typeProduct === "seller" && (

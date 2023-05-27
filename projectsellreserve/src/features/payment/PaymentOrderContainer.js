@@ -2,16 +2,14 @@ import { BiChevronLeft } from "react-icons/bi";
 import EditBooking from "./EditBooking";
 import FormPayment from "./FormPayment";
 import Buttons from "../../components/Buttons";
-import RoomDetailCard from "./RoomDetailCard";
-import useCart from "../../hooks/useCart";
+import RoomDetailCardSeller from "./RoomDetailCardSeller";
+import RoomDetailCardBooking from "./RoomDetailCardBooking";
 import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
 import usePayment from "../../hooks/usePayment";
 
 export default function PaymentOrderContainer() {
-  const { cart } = useCart();
-  // console.log("cart:", cart);
   const {
     handleCreateOrderPayment,
     setCreditCardNumber,
@@ -37,11 +35,8 @@ export default function PaymentOrderContainer() {
           </div>
 
           <div className="w-[90%] m-auto">
-            {cart.map((el, idx) => (
-              <React.Fragment key={idx}>
-                {el.Room.Category.typeProduct === "reserve" && <EditBooking />}
-              </React.Fragment>
-            ))}
+            <EditBooking />
+
             <FormPayment
               onCreditCardNumberChange={e =>
                 setCreditCardNumber(e.target.value)
@@ -90,7 +85,8 @@ export default function PaymentOrderContainer() {
 
         {/* Container Right */}
         <div className="w-5/12 flex justify-center items-center ">
-          <RoomDetailCard />
+          {/* <RoomDetailCardSeller /> */}
+          <RoomDetailCardBooking />
         </div>
       </div>
 

@@ -3,6 +3,7 @@ import useCart from "../hooks/useCart";
 import { createOrder } from "../apis/order-api";
 import { createPayment } from "../apis/payment-api";
 import useLoading from "../hooks/useLoading";
+import { handleSweetAlert2 } from "../components/SweetAlert2 ";
 
 export const PaymentContext = createContext();
 
@@ -49,6 +50,13 @@ export default function PaymentContextProvider({ children }) {
         // สร้างการชำระเงิน
         await createPayment(paymentData);
         stopLoading();
+        handleSweetAlert2({
+          title: "ชำระเงินเสร็จสิ้น",
+          icon: "success",
+          text: "กรุณารอการตรวจสอบใช้เวลา 1-2 วัน",
+          confirmButtonText: "รับทราบ",
+          confirmButtonColor: "#4267B2"
+        });
       }
     } catch (error) {
       console.error(
