@@ -52,7 +52,6 @@ export default function ProductRoomPage() {
 
   const handleAddToCardReserve = () => {
     if (authenticateUser) {
-      window.location.href = "/paymentOrderPage";
     } else {
       setOpenLogin(true);
     }
@@ -114,13 +113,12 @@ export default function ProductRoomPage() {
           {/*  BOX 2 RIGHT CARD-ORDER */}
           <div className="w-1/3">
             {selectedProduct.Category.typeProduct === "reserve" && (
-              <CardBooking onClick={handleAddToCardReserve} />
+              <CardBooking handleAddToCardReserve={handleAddToCardReserve} />
             )}
 
             {selectedProduct.Category.typeProduct === "seller" && (
               <CardButton>
                 <Buttons onClick={handleAddToCart}>
-                  {" "}
                   <p className="text-[20px]">เพิ่มลงในตะกร้า</p>
                 </Buttons>
               </CardButton>

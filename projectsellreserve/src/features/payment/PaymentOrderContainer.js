@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
 import usePayment from "../../hooks/usePayment";
+import useCart from "../../hooks/useCart";
 
 export default function PaymentOrderContainer() {
   const {
@@ -18,6 +19,10 @@ export default function PaymentOrderContainer() {
     setZipCode,
     setCountry
   } = usePayment();
+
+  const { cart } = useCart();
+  // console.log("cart", cart);
+  // console.log("cart.typeProduct", cart.typeProduct);
 
   const [open, setOpen] = useState(false);
 

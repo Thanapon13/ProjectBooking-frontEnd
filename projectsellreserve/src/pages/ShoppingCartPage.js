@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ShoppingCartPage() {
   const { cart, handleDeleteRoom } = useCart();
+  console.log("cartssssss", cart);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const navigate = useNavigate();

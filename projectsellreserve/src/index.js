@@ -10,6 +10,7 @@ import ProvinceContextProvider from "./contexts/ProvinceContext";
 import ProductContextProvider from "./contexts/ProductContext";
 import CartContextProvider from "./contexts/CartContext";
 import PaymentContextProvider from "./contexts/PaymentContext";
+import BookingContextProvider from "./contexts/BookingContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -20,7 +21,9 @@ root.render(
           <ProductContextProvider>
             <CartContextProvider>
               <PaymentContextProvider>
-                <App />
+                <BookingContextProvider>
+                  <App />
+                </BookingContextProvider>
               </PaymentContextProvider>
             </CartContextProvider>
           </ProductContextProvider>
