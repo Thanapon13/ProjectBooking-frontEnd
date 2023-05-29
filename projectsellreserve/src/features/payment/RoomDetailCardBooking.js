@@ -3,7 +3,7 @@ import moment from "moment";
 
 export default function RoomDetailCardBooking() {
   const { booking } = useBooking();
-  console.log("booking:", booking);
+  // console.log("booking:", booking);
 
   return (
     <div>

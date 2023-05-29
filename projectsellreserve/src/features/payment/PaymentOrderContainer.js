@@ -28,9 +28,9 @@ export default function PaymentOrderContainer() {
 
   return (
     <>
-      <div className="flex justify-center flex-wrap	">
+      <div className="flex justify-center flex-wrap ">
         {/* Container Left */}
-        <div className="w-5/12 p-2  flex-wrap	">
+        <div className="w-5/12 p-2 flex-wrap ">
           {/* Header */}
           <div className="flex items-center gap-6 mt-10">
             <i className="text-3xl cursor-pointer hover:rounded-full hover:bg-gray-200">
@@ -90,6 +90,12 @@ export default function PaymentOrderContainer() {
 
         {/* Container Right */}
         <div className="w-5/12 flex justify-center items-center ">
+          {/* {cart && cart.length > 0 && cart[0].typeProduct === "seller" ? (
+            <RoomDetailCardSeller typeProduct="seller" />
+          ) : (
+            <RoomDetailCardBooking />
+          )} */}
+
           {/* <RoomDetailCardSeller /> */}
           <RoomDetailCardBooking />
         </div>

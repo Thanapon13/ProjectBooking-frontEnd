@@ -4,14 +4,13 @@ export default function RoomDetailCardSeller() {
   const { cart } = useCart();
   // console.log("cart:", cart);
 
-  const totalPrice = cart.reduce(
-    (total, el) => total + Number(el.Room.price),
-    0
-  );
+  const totalPrice = cart
+    .map(el => Number(el.Room.price))
+    .reduce((total, price) => total + price, 0);
   const formattedTotalPrice = totalPrice.toFixed(2);
 
   return (
-    <div className="border-2 w-[460px]  rounded-xl p-5 ">
+    <div className="border-2 w-[460px] rounded-xl p-5">
       {cart.map((el, idx) => {
         const roomImages = JSON.parse(el.Room.roomImage);
         const firstImage =
@@ -21,7 +20,7 @@ export default function RoomDetailCardSeller() {
 
         return (
           <div key={idx}>
-            <div className="flex justify-start items-center gap-5 border-b-2 py-4 ">
+            <div className="flex justify-start items-center gap-5 border-b-2 py-4">
               <img
                 src={firstImage}
                 alt="img"

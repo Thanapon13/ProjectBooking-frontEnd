@@ -2,11 +2,14 @@ import "flowbite";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import useCart from "../hooks/useCart";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function ShoppingCartPage() {
   const { cart, handleDeleteRoom } = useCart();
-  console.log("cartssssss", cart);
+  const { roomId } = useParams();
+  // console.log("roomId:", roomId);
+
+  // console.log("cartssssss", cart);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const navigate = useNavigate();
