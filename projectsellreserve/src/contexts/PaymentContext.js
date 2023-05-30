@@ -1,7 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import useCart from "../hooks/useCart";
 import { createOrder } from "../apis/order-api";
 import { createPayment } from "../apis/payment-api";
+import {
+  createReservationPayment,
+  getReservation
+} from "../apis/reservationPayment-api";
 import useLoading from "../hooks/useLoading";
 import { handleSweetAlert2 } from "../components/SweetAlert2 ";
 
@@ -10,6 +14,8 @@ export const PaymentContext = createContext();
 export default function PaymentContextProvider({ children }) {
   const { cart } = useCart();
   const { startLoading, stopLoading } = useLoading();
+  const [reservation, setReservation] = useState([]);
+  console.log("reservation:", reservation);
 
   const [creditCardNumber, setCreditCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
@@ -36,6 +42,13 @@ export default function PaymentContextProvider({ children }) {
         orderIds.push(orderId);
       }
 
+      // สร้าง ReservationPayment และรับ reservationDataId
+      const reservationData = { id: reservation.id }; // อัปเดตการใช้ reservation.id
+      const reservationDataResponse = await createReservationPayment(
+        reservationData
+      );
+      const reservationDataId = reservationDataResponse.data.reservationData.id;
+
       // กำหนดค่าข้อมูลการชำระเงิน
       for (const orderId of orderIds) {
         const paymentData = {
@@ -44,7 +57,8 @@ export default function PaymentContextProvider({ children }) {
           cvv: Number(cvv),
           zipCode: Number(zipCode),
           country: country,
-          orderId: orderId
+          orderId: orderId,
+          reservationPaymentId: reservationDataId // เพิ่ม reservationDataId
         };
         // console.log("paymentData:", paymentData);
         // สร้างการชำระเงิน
@@ -65,6 +79,15 @@ export default function PaymentContextProvider({ children }) {
       );
     }
   };
+
+  useEffect(() => {
+    const fetchReservation = async () => {
+      const res = await getReservation();
+      setReservation(res.data.getReservation);
+      // console.log(res.data.getReservation, "res.data.");
+    };
+    fetchReservation();
+  }, []);
 
   return (
     <PaymentContext.Provider

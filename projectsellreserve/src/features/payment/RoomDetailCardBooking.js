@@ -34,19 +34,31 @@ export default function RoomDetailCardBooking() {
 
           <div className="flex flex-col justify-center gap-4 pt-4 border-b-2 py-4">
             <h1 className="font-bold text-xl">รายละเอียดราคา</h1>
-
             <div className="flex justify-between items-center">
               <p>
                 ฿ {el.Room.price} x{" "}
-                {Math.floor(moment(el.endDate).diff(el.startDate, "days"))} คืน
+                {moment(el.endDate).diff(el.startDate, "days")} คืน
               </p>
-              <p>฿ {el.total}</p>
+              <p>
+                ฿{" "}
+                {el.Room.price * moment(el.endDate).diff(el.startDate, "days")}{" "}
+                บาท
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-base">ค่าบริการ HamBooking</p>
+              <p>฿1,500 บาท</p>
             </div>
           </div>
 
           <div className="flex justify-between items-center border-b-2 py-4">
             <h1>รวม(THB)</h1>
-            <h1>฿ {el.total}</h1>
+            <h1>
+              ฿{" "}
+              {el.Room.price * moment(el.endDate).diff(el.startDate, "days") +
+                1500}{" "}
+              บาท
+            </h1>
           </div>
 
           <div className="p-4">

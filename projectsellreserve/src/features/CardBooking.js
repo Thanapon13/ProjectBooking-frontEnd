@@ -4,12 +4,13 @@ import { useState } from "react";
 import { DatePicker } from "antd";
 import moment from "moment";
 import Buttons from "../components/Buttons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { createBooking } from "../apis/booking-api";
 import useProduct from "../hooks/useProduct";
 const { RangePicker } = DatePicker;
 
 export default function CardBooking({ handleAddToCardReserve }) {
+  const navigate = useNavigate();
   const { product } = useProduct();
   const { roomId } = useParams();
 
@@ -41,6 +42,7 @@ export default function CardBooking({ handleAddToCardReserve }) {
       console.log("bookingData", bookingData);
 
       await createBooking(roomId, bookingData);
+      navigate(0);
     } catch (err) {
       console.log(err);
     }

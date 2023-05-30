@@ -7,11 +7,11 @@ export default function EditBooking() {
   // console.log("booking:", booking);
   const [open, setOpen] = useState(false);
   const [startDate, setStartDate] = useState(null);
-  console.log("startDate:", startDate);
+  // console.log("startDate:", startDate);
   const [endDate, setEndDate] = useState(null);
-  console.log("endDate:", endDate);
+  // console.log("endDate:", endDate);
   const [bookingId, setBookingId] = useState(null);
-  console.log("bookingId:", bookingId);
+  // console.log("bookingId:", bookingId);
 
   const handleOpen = id => {
     setOpen(true);

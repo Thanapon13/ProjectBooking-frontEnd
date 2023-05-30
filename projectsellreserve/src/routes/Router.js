@@ -60,10 +60,6 @@ const router = createBrowserRouter([
         path: "/paymentOrderPage",
         element: <PaymentOrderPage />
       }
-      // {
-      //   path: "/paymentOrderPage/:bookingId",
-      //   element: <PaymentOrderPage />
-      // }
     ]
   }
 ]);

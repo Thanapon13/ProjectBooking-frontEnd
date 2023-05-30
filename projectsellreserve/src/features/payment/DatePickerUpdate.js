@@ -2,25 +2,29 @@ import { DatePicker } from "antd";
 import { useState } from "react";
 import { updateBooking } from "../../apis/booking-api";
 import moment from "moment";
-import useBooking from "../../hooks/useBooking";
+import { useNavigate } from "react-router-dom";
 const { RangePicker } = DatePicker;
 
 export default function DatePickerUpdate({ onClose, bookingId }) {
-  const { booking } = useBooking();
-  console.log("booking", booking);
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
+  const navigate = useNavigate();
+  const [updateCheckinDate, setUpdateCheckinDate] = useState(null);
+  // console.log("updateCheckinDate:", updateCheckinDate);
+  const [updateCheckoutDate, setUpdateCheckoutDate] = useState(null);
+  // console.log("updateCheckoutDate:", updateCheckoutDate);
 
   const handleUpdateBooking = async () => {
     try {
       const updateBookingData = {
-        startDate: moment(checkinDate).format(),
-        endDate: moment(checkoutDate).format()
+        startDate: moment(updateCheckinDate).format(),
+        endDate: moment(updateCheckoutDate).format(),
+        bookingId: bookingId
       };
-      console.log("updateBookingData", updateBookingData);
 
-      console.log("bookingId:", bookingId);
-      await updateBooking(bookingId, updateBookingData);
+      console.log("updateBookingData:", updateBookingData);
+      console.log("----------------------------------------");
+      const result = await updateBooking(updateBookingData);
+      console.log("updateBooking result:", result);
+      navigate(0);
     } catch (error) {
       console.error("เกิดข้อผิดพลาดในการอัปเดตการจอง:", error);
     }
@@ -38,8 +42,8 @@ export default function DatePickerUpdate({ onClose, bookingId }) {
             format="DD-MM-YYYY"
             onChange={values => {
               if (values !== null) {
-                setCheckinDate(values[0].toDate());
-                setCheckoutDate(values[1].toDate());
+                setUpdateCheckinDate(values[0].toDate());
+                setUpdateCheckoutDate(values[1].toDate());
               }
             }}
           />

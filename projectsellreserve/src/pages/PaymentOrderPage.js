@@ -1,9 +1,9 @@
-import PaymentOrderContainer from "../features/payment/PaymentOrderContainer";
+import PaymentContainer from "../features/payment/PaymentContainer";
 
 export default function PaymentOrderPage() {
   return (
     <>
-      <PaymentOrderContainer />
+      <PaymentContainer />
     </>
   );
 }
