@@ -1,3 +1,3 @@
 import axios from "../config/axios";
 
-export const createPayment = input => axios.post("/payment", input);
+export const createPayment = paymentData => axios.post("/payment", paymentData);

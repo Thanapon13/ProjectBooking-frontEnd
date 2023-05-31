@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import Modal from "../../components/modal/Modal";
 import CancellationPolicy from "./CancellationPolicy";
 import usePayment from "../../hooks/usePayment";
+import useCart from "../../hooks/useCart";
 
 export default function PaymentContainer() {
   const {
@@ -16,10 +17,20 @@ export default function PaymentContainer() {
     setExpirationDate,
     setCvv,
     setZipCode,
-    setCountry
+    setCountry,
+    handleCreateReservationPayment,
+    bookingId
   } = usePayment();
 
+  const { cart } = useCart();
+  // console.log("cart", cart);
+
   const [open, setOpen] = useState(false);
+
+  const confirmHandlePayment = () => {
+    handleCreateOrderPayment();
+    handleCreateReservationPayment();
+  };
 
   return (
     <>
@@ -75,7 +86,7 @@ export default function PaymentContainer() {
               </p>
               <Buttons
                 style={{ width: "50%", fontSize: "20px" }}
-                onClick={() => handleCreateOrderPayment()}
+                onClick={confirmHandlePayment}
               >
                 ยืนยันและชำระเงิน
               </Buttons>
@@ -85,14 +96,8 @@ export default function PaymentContainer() {
 
         {/* Container Right */}
         <div className="w-5/12 flex justify-center items-center ">
-          {/* {cart && cart.length > 0 && cart[0].typeProduct === "seller" ? (
-            <RoomDetailCardSeller typeProduct="seller" />
-          ) : (
-            <RoomDetailCardBooking />
-          )} */}
-
-          {/* <RoomDetailCardSeller /> */}
-          <RoomDetailCardBooking />
+          {cart.length > 0 && <RoomDetailCardSeller />}
+          {bookingId && <RoomDetailCardBooking />}
         </div>
       </div>
 

@@ -1,15 +1,23 @@
 import useBooking from "../../hooks/useBooking";
+import { BsFillTrash3Fill } from "react-icons/bs";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 export default function RoomDetailCardBooking() {
-  const { booking } = useBooking();
-  // console.log("booking:", booking);
+  const navigate = useNavigate();
+  const { booking, handleDeleteBooking } = useBooking();
+  console.log("bookingss", booking);
+
+  const handelDeleteBooking = roomId => {
+    handleDeleteBooking(roomId);
+    navigate(0);
+  };
 
   return (
     <div>
       {booking.map((el, idx) => (
         <div className="border-2 w-[460px] rounded-xl p-5" key={idx}>
-          <div>
+          <div className="flex">
             <div className="flex justify-start items-center gap-5 border-b-2 py-4">
               <img
                 src={el.Room.roomImage}
@@ -22,6 +30,12 @@ export default function RoomDetailCardBooking() {
                 <h1>ราคาต่อคืน {el.Room.price} บาท</h1>
               </div>
             </div>
+            <i
+              className="text-xl mr-4 hover:text-red-600 cursor-pointer"
+              onClick={() => handelDeleteBooking(el.Room.id)}
+            >
+              <BsFillTrash3Fill />
+            </i>
           </div>
 
           <div className="border-b-2 py-4">

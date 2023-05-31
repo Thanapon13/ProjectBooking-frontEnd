@@ -1,7 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { login, getMe } from "../apis/auth-api";
-import { updateProfile, getUserOrderHistorys } from "../apis/user-api";
+import {
+  updateProfile,
+  getUserOrderHistorys,
+  getUserOrderHistoryRoomReservationPayment
+} from "../apis/user-api";
 
 import {
   getAccessToken,
@@ -17,6 +21,8 @@ export default function AuthContextProvider({ children }) {
   );
   const [orderUser, setOrderUser] = useState("");
   // console.log("orderUser:", orderUser);
+  const [roomReservationPayment, setRoomReservationPayment] = useState([]);
+  // console.log("roomReservationPayment:", roomReservationPayment);
 
   useEffect(() => {
     const fetchAuthUser = async () => {
@@ -58,6 +64,15 @@ export default function AuthContextProvider({ children }) {
     fetchOrderUser();
   }, []);
 
+  useEffect(() => {
+    const fetchOrderRoomReservationPayment = async () => {
+      const res = await getUserOrderHistoryRoomReservationPayment();
+      setRoomReservationPayment(res.data);
+      // console.log("res.data", res.data);
+    };
+    fetchOrderRoomReservationPayment();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -65,7 +80,8 @@ export default function AuthContextProvider({ children }) {
         userLogin,
         logout,
         userUpdateProfile,
-        orderUser
+        orderUser,
+        roomReservationPayment
       }}
     >
       {children}

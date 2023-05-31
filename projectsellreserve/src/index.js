@@ -20,11 +20,11 @@ root.render(
         <ProvinceContextProvider>
           <ProductContextProvider>
             <CartContextProvider>
-              <PaymentContextProvider>
-                <BookingContextProvider>
+              <BookingContextProvider>
+                <PaymentContextProvider>
                   <App />
-                </BookingContextProvider>
-              </PaymentContextProvider>
+                </PaymentContextProvider>
+              </BookingContextProvider>
             </CartContextProvider>
           </ProductContextProvider>
         </ProvinceContextProvider>
