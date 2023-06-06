@@ -1,18 +1,31 @@
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { userLogin } = useAuth();
+  const { userLogin, authenticateUser } = useAuth();
+  // console.log("---------------authenticateUser", authenticateUser);
+
+  const navigate = useNavigate();
 
   const handleSubmitForm = async e => {
     try {
       e.preventDefault();
       await userLogin(email, password);
       onClose();
+
+      // if (authenticateUser && authenticateUser.isAdmin === true) {
+      //   navigate("/adminPage");
+      // } else {
+      //   navigate("/profile");
+      // }
+
+      email === "admin01@gmail.com" ? navigate("/adminPage") : navigate("/");
+
       toast.success("login success");
     } catch (err) {
       console.log(err);

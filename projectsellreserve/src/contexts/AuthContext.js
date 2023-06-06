@@ -4,7 +4,8 @@ import { login, getMe } from "../apis/auth-api";
 import {
   updateProfile,
   getUserOrderHistorys,
-  getUserOrderHistoryRoomReservationPayment
+  getUserOrderHistoryRoomReservationPayment,
+  getPaymentUser
 } from "../apis/user-api";
 
 import {
@@ -19,16 +20,20 @@ export default function AuthContextProvider({ children }) {
   const [authenticateUser, setAuthenticatedUser] = useState(
     getAccessToken() ? true : null
   );
+  // console.log("authenticateUser", authenticateUser);
+
   const [orderUser, setOrderUser] = useState("");
   // console.log("orderUser:", orderUser);
   const [roomReservationPayment, setRoomReservationPayment] = useState([]);
   // console.log("roomReservationPayment:", roomReservationPayment);
 
+  const [paymentUser, setPaymentUser] = useState([]);
+
   useEffect(() => {
     const fetchAuthUser = async () => {
       try {
         const res = await getMe();
-        // console.log(res, "res");
+        // console.log("getMe", res);
         setAuthenticatedUser(res.data.user);
       } catch (err) {
         removeAccessToken();
@@ -73,6 +78,15 @@ export default function AuthContextProvider({ children }) {
     fetchOrderRoomReservationPayment();
   }, []);
 
+  useEffect(() => {
+    const fetchsetPaymentUser = async () => {
+      const res = await getPaymentUser();
+      setPaymentUser(res.data.purePaymentUserData);
+      // console.log("res.data.purePaymentUserData", res.data.purePaymentUserData);
+    };
+    fetchsetPaymentUser();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -81,7 +95,8 @@ export default function AuthContextProvider({ children }) {
         logout,
         userUpdateProfile,
         orderUser,
-        roomReservationPayment
+        roomReservationPayment,
+        paymentUser
       }}
     >
       {children}

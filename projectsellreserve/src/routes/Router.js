@@ -9,6 +9,7 @@ import ProtectedRout from "../features/auth/ProtectedRout";
 import RegisterProductPage from "../pages/RegisterProductPage ";
 import ProfilePage from "../pages/ProfilePage";
 import PaymentOrderPage from "../pages/PaymentOrderPage";
+import AdminPage from "../pages/AdminPage";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,6 @@ const router = createBrowserRouter([
           </ProtectedRout>
         )
       },
-      { path: "/admin" },
       { path: "/order" },
       { path: "/community" },
       {
@@ -59,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/paymentOrderPage",
         element: <PaymentOrderPage />
+      },
+      {
+        path: "/adminPage",
+        element: <AdminPage />
       }
     ]
   }
