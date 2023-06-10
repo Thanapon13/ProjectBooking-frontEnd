@@ -1,3 +1,5 @@
+import OrderUser from "../../components/OrderUser";
+import PaymentUser from "../../components/PaymentUser";
 import useAuth from "../../hooks/useAuth";
 
 export default function CardOrderTyepeSeller() {
@@ -26,47 +28,30 @@ export default function CardOrderTyepeSeller() {
                   />
                 </div>
                 {/* Box Content */}
-                <div className="w-4/6 flex justify-between items-center gap-6 p-2 flex-wrap">
+                <div className="w-4/6 flex justify-between items-center gap-6 p-2">
                   {/* Left */}
                   <div className="flex gap-2 flex-grow">
                     {/* Order List */}
-                    <div className="font-bold">
-                      <h1>Customer:</h1>
-                      <h1>Product Name:</h1>
-                      <h1>Price:</h1>
-                      <h1>Category:</h1>
-                      <h1>Date :</h1>
-                      <h1>OrderStatus :</h1>
-                    </div>
-                    <div>
-                      <h1>
-                        {item.User.firstName} {item.User.lastName}
-                      </h1>
-                      <h1>{item.Room.title}</h1>
-                      <h1>{item.Room.price} บาท</h1>
-                      <h1>{item.Room.Category.typeProduct}</h1>
-                      <h1>{item.OrderStatuses[0].date}</h1>
-                      <h1 className="text-rose-600">
-                        {item.OrderStatuses[0].status}
-                      </h1>
-                    </div>
+
+                    <OrderUser
+                      firstName={item.User.firstName}
+                      lastName={item.User.lastName}
+                      title={item.Room.title}
+                      price={item.Room.price}
+                      typeProduct={item.Room.Category.typeProduct}
+                      OrderStatusesDate={item.OrderStatuses[0].date}
+                      OrderStatuses={item.OrderStatuses[0].status}
+                    />
                   </div>
                   {/* Payment Order */}
                   <div className="flex flex-grow">
-                    <div className="font-bold">
-                      <h1>Credit Card Number:</h1>
-                      <h1>Expiration Date:</h1>
-                      <h1>CVV:</h1>
-                      <h1>Zip Code:</h1>
-                      <h1>Country:</h1>
-                    </div>
-                    <div>
-                      <h1>{item.Payment.creditCardNumber}</h1>
-                      <h1>{item.Payment.expirationDate}</h1>
-                      <h1>{item.Payment.cvv}</h1>
-                      <h1>{item.Payment.zipCode}</h1>
-                      <h1>{item.Payment.country}</h1>
-                    </div>
+                    <PaymentUser
+                      creditCardNumber={item.Payment.creditCardNumber}
+                      expirationDate={item.Payment.expirationDate}
+                      cvv={item.Payment.cvv}
+                      zipCode={item.Payment.zipCode}
+                      country={item.Payment.country}
+                    />
                   </div>
                 </div>
                 <div className="w-full flex items-center justify-center flex-wrap gap-2">

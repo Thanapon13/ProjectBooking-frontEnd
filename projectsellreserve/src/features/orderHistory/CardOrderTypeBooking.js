@@ -1,6 +1,7 @@
 import moment from "moment";
 import useAuth from "../../hooks/useAuth";
 import { format } from "date-fns/esm";
+import PaymentUser from "../../components/PaymentUser";
 
 export default function CardOrderTypeBooking() {
   const { roomReservationPayment, authenticateUser } = useAuth();
@@ -44,7 +45,6 @@ export default function CardOrderTypeBooking() {
                 <div className="flex justify-between items-start gap-6 p-2 flex-wrap">
                   {/* Left */}
                   <div className="flex gap-2 flex-grow">
-                    {/* Order List */}
                     <div className="font-bold">
                       <h1>Customer :</h1>
                       <h1>Product Name :</h1>
@@ -52,8 +52,8 @@ export default function CardOrderTypeBooking() {
                       <h1>Check-in :</h1>
                       <h1>Check-out :</h1>
                       <h1>Nights :</h1>
-                      <h1>Price (excl. service fee) :</h1>
-                      <h1>Total Price (incl. service fee) :</h1>
+                      <h1>Price :</h1>
+                      <h1>Total :</h1>
                       <h1>Number of Guests :</h1>
                       <h1>Status :</h1>
                     </div>
@@ -67,7 +67,7 @@ export default function CardOrderTypeBooking() {
                       <h1>{endDate}</h1>
                       <h1>
                         {el.Room.price} x{" "}
-                        {moment(el.endDate).diff(el.startDate, "days")} nights
+                        {moment(el.endDate).diff(el.startDate, "days")} คืน
                       </h1>
                       <h1>
                         {el.Room.price *
@@ -86,23 +86,15 @@ export default function CardOrderTypeBooking() {
                       </h1>
                     </div>
                   </div>
+
                   {/* Payment Order */}
-                  <div className="flex flex-grow">
-                    <div className="font-bold">
-                      <h1>Credit Card Number:</h1>
-                      <h1>Expiration Date:</h1>
-                      <h1>CVV:</h1>
-                      <h1>Zip Code:</h1>
-                      <h1>Country:</h1>
-                    </div>
-                    <div>
-                      <h1>{el.Payments[0].creditCardNumber}</h1>
-                      <h1>{el.Payments[0].expirationDate}</h1>
-                      <h1>{el.Payments[0].cvv}</h1>
-                      <h1>{el.Payments[0].zipCode}</h1>
-                      <h1>{el.Payments[0].country}</h1>
-                    </div>
-                  </div>
+                  <PaymentUser
+                    creditCardNumber={el.Payments[0].creditCardNumber}
+                    expirationDate={el.Payments[0].expirationDate}
+                    cvv={el.Payments[0].cvv}
+                    zipCode={el.Payments[0].zipCode}
+                    country={el.Payments[0].country}
+                  />
                 </div>
                 <div className="w-full flex items-center justify-center flex-wrap gap-2">
                   <h1 className="font-bold">Address:</h1>
