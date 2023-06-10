@@ -59,9 +59,6 @@ export default function AdminPage() {
       <div className="flex flex-col  gap-6">
         <div className="border-2 flex flex-col justify-center items-center p-2">
           <h1 className="text-2xl font-bold">Admin</h1>
-          <h1 className="text-xl font-bold">รอการอนุมัติ</h1>
-          <h1 className="text-xl font-bold">รอการอนุมัติ</h1>
-          <h1 className="text-xl font-bold">รอการอนุมัติ</h1>
         </div>
         <div className="flex flex-col">
           <div className="w-[80%] m-auto flex flex-col justify-center items-center gap-4 ">
