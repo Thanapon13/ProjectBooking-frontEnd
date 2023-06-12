@@ -5,4 +5,3 @@ export const updateUserInfo = input => axios.patch("/user/info", input);
 export const getUserOrderHistorys = () => axios.get("/user/userOrder");
 export const getUserOrderHistoryRoomReservationPayment = () =>
   axios.get("/user/getUserOrderHistoryRoomReservationPayment");
-export const getPaymentUser = () => axios.get("/user/getPaymentUser");

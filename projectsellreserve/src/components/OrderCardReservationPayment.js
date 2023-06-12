@@ -24,10 +24,10 @@ export default function OrderCardReservationPayment({
 }) {
   return (
     <>
-      <div className="w-full mt-4 flex items-center justify-center flex-wrap gap-6 mb-6 border-b-2 py-6">
+      <div className="flex flex-col mt-4 items-center justify-center flex-wrap gap-6 mb-6">
         {/* Box Image */}
         <div>
-          <img src={roomImage} alt="Room" className="w-[240px]" />
+          <img src={roomImage} alt="Room" className="w-[300px]  rounded-xl" />
         </div>
         {/* Box Content */}
         <div className="w-4/6 flex justify-between items-center gap-6 p-2 flex-wrap">
@@ -47,6 +47,7 @@ export default function OrderCardReservationPayment({
             OrderStatuses={OrderStatuses}
           />
           {/* Payment Order */}
+
           <PaymentUser
             PaymentId={PaymentId}
             creditCardNumber={creditCardNumber}

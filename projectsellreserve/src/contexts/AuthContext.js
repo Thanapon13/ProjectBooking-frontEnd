@@ -4,9 +4,9 @@ import { login, getMe } from "../apis/auth-api";
 import {
   updateProfile,
   getUserOrderHistorys,
-  getUserOrderHistoryRoomReservationPayment,
-  getPaymentUser
+  getUserOrderHistoryRoomReservationPayment
 } from "../apis/user-api";
+import { getPaymentUser, updateConfirmed } from "../apis/admin-api";
 
 import {
   getAccessToken,
@@ -28,6 +28,7 @@ export default function AuthContextProvider({ children }) {
   // console.log("roomReservationPayment:", roomReservationPayment);
 
   const [paymentUser, setPaymentUser] = useState([]);
+  console.log("paymentUser:", paymentUser);
 
   useEffect(() => {
     const fetchAuthUser = async () => {
@@ -87,6 +88,18 @@ export default function AuthContextProvider({ children }) {
     fetchsetPaymentUser();
   }, []);
 
+  const handleConfirmed = async (orderId, reservationPaymentId) => {
+    try {
+      await updateConfirmed({
+        orderId,
+        reservationPaymentId,
+        action: "confirmed"
+      });
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -96,7 +109,8 @@ export default function AuthContextProvider({ children }) {
         userUpdateProfile,
         orderUser,
         roomReservationPayment,
-        paymentUser
+        paymentUser,
+        handleConfirmed
       }}
     >
       {children}
