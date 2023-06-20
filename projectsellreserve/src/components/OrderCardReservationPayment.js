@@ -20,7 +20,8 @@ export default function OrderCardReservationPayment({
   UserId,
   RoomId,
   OrderStatuses,
-  roomImage
+  roomImage,
+  ReservationPaymentId
 }) {
   return (
     <>
@@ -43,6 +44,7 @@ export default function OrderCardReservationPayment({
             Total={Total}
             typeProduct={typeProduct}
             UserId={UserId}
+            ReservationPaymentId={ReservationPaymentId}
             RoomId={RoomId}
             OrderStatuses={OrderStatuses}
           />

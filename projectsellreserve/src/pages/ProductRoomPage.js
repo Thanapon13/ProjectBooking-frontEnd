@@ -51,8 +51,7 @@ export default function ProductRoomPage() {
   };
 
   const handleAddToCardReserve = () => {
-    if (authenticateUser) {
-    } else {
+    if (!authenticateUser) {
       setOpenLogin(true);
     }
   };

@@ -10,7 +10,8 @@ export default function CardOrderTypeBooking({
   typeProduct,
   UserId,
   RoomId,
-  OrderStatuses
+  OrderStatuses,
+  ReservationPaymentId
 }) {
   return (
     <>
@@ -24,6 +25,7 @@ export default function CardOrderTypeBooking({
         <h1>Total:</h1>
         <h1>Category:</h1>
         <h1>UserId</h1>
+        <h1>ReservationPaymentId:</h1>
         <h1>RoomId:</h1>
         <h1>OrderStatus :</h1>
       </div>
@@ -41,6 +43,7 @@ export default function CardOrderTypeBooking({
         <h1>{price * moment(CheckOut).diff(CheckIn, "days") + 1500} บาท </h1>
         <h1>{typeProduct}</h1>
         <h1>{UserId}</h1>
+        <h1>{ReservationPaymentId}</h1>
         <h1>{RoomId}</h1>
         <h1 className="text-rose-600">{OrderStatuses}</h1>
       </div>

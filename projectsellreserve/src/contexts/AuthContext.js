@@ -1,12 +1,21 @@
 import { createContext, useEffect, useState } from "react";
 import jwtDecode from "jwt-decode";
 import { login, getMe } from "../apis/auth-api";
+
 import {
   updateProfile,
   getUserOrderHistorys,
   getUserOrderHistoryRoomReservationPayment
 } from "../apis/user-api";
-import { getPaymentUser, updateConfirmed } from "../apis/admin-api";
+import {
+  getPaymentUser,
+  updateOrderConfirmed,
+  updateReservationPaymentConfirmed,
+  updateOrderCancel,
+  updateReservationPaymentCancel,
+  deleteReservationPayment,
+  deleteReservationOrder
+} from "../apis/admin-api";
 
 import {
   getAccessToken,
@@ -28,7 +37,7 @@ export default function AuthContextProvider({ children }) {
   // console.log("roomReservationPayment:", roomReservationPayment);
 
   const [paymentUser, setPaymentUser] = useState([]);
-  console.log("paymentUser:", paymentUser);
+  // console.log("paymentUser:", paymentUser);
 
   useEffect(() => {
     const fetchAuthUser = async () => {
@@ -88,16 +97,57 @@ export default function AuthContextProvider({ children }) {
     fetchsetPaymentUser();
   }, []);
 
-  const handleConfirmed = async (orderId, reservationPaymentId) => {
+  const handleupdateOrderConfirmed = async orderId => {
     try {
-      await updateConfirmed({
+      await updateOrderConfirmed({
         orderId,
-        reservationPaymentId,
         action: "confirmed"
       });
     } catch (err) {
-      console.log(err.response.data);
+      console.log(err);
     }
+  };
+
+  const handleupdateOrderCancel = async orderId => {
+    try {
+      await updateOrderCancel({
+        orderId,
+        action: "cancel"
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleupdateReservationPaymentConfirmed =
+    async reservationPaymentId => {
+      try {
+        await updateReservationPaymentConfirmed({
+          reservationPaymentId,
+          action: "confirmed"
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+  const handleupdateReservationPaymentCancel = async reservationPaymentId => {
+    try {
+      await updateReservationPaymentCancel({
+        reservationPaymentId,
+        action: "cancel"
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDeleteReservationPayment = async roomId => {
+    await deleteReservationPayment(roomId);
+  };
+
+  const handleDeleteReservationonOrder = async roomId => {
+    await deleteReservationOrder(roomId);
   };
 
   return (
@@ -110,7 +160,12 @@ export default function AuthContextProvider({ children }) {
         orderUser,
         roomReservationPayment,
         paymentUser,
-        handleConfirmed
+        handleupdateOrderConfirmed,
+        handleupdateOrderCancel,
+        handleupdateReservationPaymentConfirmed,
+        handleupdateReservationPaymentCancel,
+        handleDeleteReservationPayment,
+        handleDeleteReservationonOrder
       }}
     >
       {children}

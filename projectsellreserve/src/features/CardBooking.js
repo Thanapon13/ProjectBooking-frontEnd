@@ -7,6 +7,7 @@ import Buttons from "../components/Buttons";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { createBooking } from "../apis/booking-api";
 import useProduct from "../hooks/useProduct";
+
 const { RangePicker } = DatePicker;
 
 export default function CardBooking({ handleAddToCardReserve }) {
@@ -33,6 +34,7 @@ export default function CardBooking({ handleAddToCardReserve }) {
   const handleCreateBooking = async () => {
     try {
       await handleAddToCardReserve();
+
       const bookingData = {
         startDate: moment(startDate).format(),
         endDate: moment(endDate).format(),
@@ -147,6 +149,7 @@ export default function CardBooking({ handleAddToCardReserve }) {
             </div>
           </div>
         )}
+
         <Link to="/paymentOrderPage">
           <Buttons type="submit" onClick={handleCreateBooking}>
             <p className="text-[20px]">จอง</p>

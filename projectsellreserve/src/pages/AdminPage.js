@@ -1,23 +1,34 @@
 import ReactPaginate from "react-paginate";
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import useBooking from "../hooks/useBooking";
 import OrderCardOrderUser from "../components/OrderCardOrderUser";
 import OrderCardReservationPayment from "../components/OrderCardReservationPayment";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import ReactPaginates from "../components/ReactPaginates";
 
 export default function AdminPage() {
-  const { paymentUser, handleConfirmed } = useAuth();
+  const {
+    paymentUser,
+    handleupdateOrderConfirmed,
+    handleupdateReservationPaymentConfirmed,
+    handleupdateOrderCancel,
+    handleupdateReservationPaymentCancel,
+    handleDeleteReservationPayment,
+    handleDeleteReservationonOrder
+  } = useAuth();
 
   // console.log("paymentUser:", paymentUser);
 
+  const navigate = useNavigate();
+
   const [paymentUserData, setPaymentUserData] = useState(paymentUser);
-  // console.log("paymentUserData", paymentUserData);
-  // console.log("paymentUserData", paymentUserData[1]?.Order?.Room?.roomImage);
+  console.log("paymentUserData", paymentUserData);
 
   const [dataInPage, setDataInPage] = useState([]);
   // console.log("dataInPage", dataInPage);
   const [page, setPage] = useState(0);
-
   // จำนวนรายการแต่บะหน้า
   // จำนวนเลขหน้า = ข้อมูลทั้งหมด / จำนวนรายการแต่ละหน้า
   // 1 = [1-3] , 2 = [4-6] , 3 = [7-9] , 4 [10]
@@ -50,6 +61,35 @@ export default function AdminPage() {
     setDataInPage(paginate);
     setPaymentUserData(paginate[page] || []);
   }, [paymentUser]);
+
+  const handleupdateOrderConfirmeds = id => {
+    handleupdateOrderConfirmed(id);
+    navigate(0);
+  };
+
+  const handleupdateOrderCancels = id => {
+    handleupdateOrderCancel(id);
+    navigate(0);
+  };
+
+  const handleupdateReservationPaymentConfirmeds = id => {
+    handleupdateReservationPaymentConfirmed(id);
+    navigate(0);
+  };
+  const updateReservationPaymentCancels = id => {
+    handleupdateReservationPaymentCancel(id);
+    navigate(0);
+  };
+
+  const handleDeleteReservationPayments = roomId => {
+    handleDeleteReservationPayment(roomId);
+    navigate(0);
+  };
+  const handleDeleteReservationonOrders = roomId => {
+    handleDeleteReservationonOrder(roomId);
+    navigate(0);
+  };
+
   return (
     <div>
       {/* Order User  */}
@@ -67,7 +107,12 @@ export default function AdminPage() {
                     {/* Order */}
                     <div className="border-b-2 py-6">
                       <div className="w-full flex justify-end items-center">
-                        <i className="text-xl mr-4 hover:text-red-600 cursor-pointer ">
+                        <i
+                          className="text-xl mr-4 hover:text-red-600 cursor-pointer "
+                          onClick={() =>
+                            handleDeleteReservationonOrders(el.Order.Room.id)
+                          }
+                        >
                           <BsFillTrash3Fill />
                         </i>
                       </div>
@@ -94,7 +139,9 @@ export default function AdminPage() {
                       <div className="flex justify-center items-center gap-6">
                         <button
                           type="button"
-                          onClick={() => handleConfirmed(el.id)}
+                          onClick={() =>
+                            handleupdateOrderConfirmeds(el.Order.id)
+                          }
                           className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Confirmed
@@ -103,6 +150,7 @@ export default function AdminPage() {
                         <button
                           type="button"
                           className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          onClick={() => handleupdateOrderCancels(el.Order.id)}
                         >
                           Cancel
                         </button>
@@ -116,7 +164,14 @@ export default function AdminPage() {
                     {/* ReservationPayment */}
                     <div className="border-b-2 py-6">
                       <div className="w-full flex justify-end items-center">
-                        <i className="text-xl mr-4 hover:text-red-600 cursor-pointer ">
+                        <i
+                          className="text-xl mr-4 hover:text-red-600 cursor-pointer "
+                          onClick={() =>
+                            handleDeleteReservationPayments(
+                              el.ReservationPayment?.Room?.id
+                            )
+                          }
+                        >
                           <BsFillTrash3Fill />
                         </i>
                       </div>
@@ -132,6 +187,7 @@ export default function AdminPage() {
                           el.ReservationPayment.Room.Category.typeProduct
                         }
                         UserId={el.ReservationPayment.User.id}
+                        ReservationPaymentId={el.ReservationPayment.id}
                         RoomId={el.ReservationPayment.Room.id}
                         OrderStatuses={
                           el.ReservationPayment.OrderStatuses[0].status
@@ -147,7 +203,11 @@ export default function AdminPage() {
                       <div className="flex justify-center items-center gap-6">
                         <button
                           type="button"
-                          onClick={() => handleConfirmed(el.id)}
+                          onClick={() =>
+                            handleupdateReservationPaymentConfirmeds(
+                              el.ReservationPayment.id
+                            )
+                          }
                           className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         >
                           Confirmed
@@ -156,6 +216,11 @@ export default function AdminPage() {
                         <button
                           type="button"
                           className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                          onClick={() =>
+                            updateReservationPaymentCancels(
+                              el.ReservationPayment.id
+                            )
+                          }
                         >
                           Cancel
                         </button>
@@ -172,24 +237,10 @@ export default function AdminPage() {
       </div>
 
       <div className="flex justify-center items-center mb-6">
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          breakLabel={"..."}
+        <ReactPaginates
           pageCount={dataInPage.length}
           marginPagesDisplayed={2}
           onPageChange={({ selected }) => handlePage(selected)}
-          containerClassName={"inline-flex -space-x-px"}
-          pageClassName="mt-5"
-          pageLinkClassName={
-            "px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          }
-          previousClassName="mt-5"
-          previousLinkClassName="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          nextClassName="mt-5"
-          nextLinkClassName="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          breakClassName="mt-5"
-          breakLinkClassName="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         />
       </div>
     </div>
