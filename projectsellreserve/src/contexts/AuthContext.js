@@ -7,14 +7,14 @@ import {
   getUserOrderHistorys,
   getUserOrderHistoryRoomReservationPayment
 } from "../apis/user-api";
+
 import {
   getPaymentUser,
   updateOrderConfirmed,
   updateReservationPaymentConfirmed,
   updateOrderCancel,
   updateReservationPaymentCancel,
-  deleteReservationPayment,
-  deleteReservationOrder
+  deletePaymentOrder
 } from "../apis/admin-api";
 
 import {
@@ -142,12 +142,12 @@ export default function AuthContextProvider({ children }) {
     }
   };
 
-  const handleDeleteReservationPayment = async roomId => {
-    await deleteReservationPayment(roomId);
-  };
-
-  const handleDeleteReservationonOrder = async roomId => {
-    await deleteReservationOrder(roomId);
+  const handleDeletePaymentOrder = async orderId => {
+    try {
+      await deletePaymentOrder(orderId);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -164,8 +164,7 @@ export default function AuthContextProvider({ children }) {
         handleupdateOrderCancel,
         handleupdateReservationPaymentConfirmed,
         handleupdateReservationPaymentCancel,
-        handleDeleteReservationPayment,
-        handleDeleteReservationonOrder
+        handleDeletePaymentOrder
       }}
     >
       {children}

@@ -1,91 +1,144 @@
+import { Button, Spin, Upload } from "antd";
 import LabelRegisterProduct from "../../components/LabelRegisterProduct";
 import InputRegisterProduct from "../../components/input/inputRegisterProduct";
-import UploadFileRoomImage from "./UploadFileRoomImage";
+import { useState } from "react";
 
 export default function FormRegisterProduct() {
+  const [createRoom, setCreateRoom] = useState({
+    roomImage: "",
+    title: "",
+    price: "",
+    address: "",
+    description: "",
+    categoryId: "",
+    provinceId: ""
+  });
+  console.log("createRoom:", createRoom);
+
+  // onChange Input CreateRoom
+  const handleCreateRoomFormSummit = e => {
+    try {
+      e.preventDefault();
+
+      const fieldName = e.target.getAttribute("name");
+      const fieldValue = e.target.value;
+
+      const newFormData = { ...createRoom };
+      newFormData[fieldName] = fieldValue;
+
+      console.log("newFormData:", newFormData);
+
+      setCreateRoom(newFormData);
+    } catch (err) {
+      console.log("handleCreateRoomFormSummit", err);
+    }
+  };
+
   return (
     <>
       <div className="bg-white w-[50%]">
         <form className="p-10 flex flex-col gap-2">
           {/* upload file */}
           <div className="mb-6">
-            <UploadFileRoomImage />
+            <Upload.Dragger
+              multiple={true}
+              listType="picture"
+              // action={"http://localhost:3000"}
+              showUploadList={{ showRemoveIcon: true }}
+              accept=".png,.jpeg,.doc"
+              beforeUpload={file => {
+                console.log({ file }, "file");
+                return true;
+              }}
+              iconRender={() => {
+                return <Spin></Spin>;
+              }}
+              progress={{
+                strokeWidth: 3,
+                strokeColor: {
+                  "0%": "#f0f",
+                  "100%": "#ff0"
+                },
+                style: { top: 12, left: 10 }
+              }}
+            >
+              ลากไฟล์มาที่นี่หรือ
+              <br />
+              <Button>คลิกอัปโหลด</Button>
+            </Upload.Dragger>
+          </div>
+
+          <div className="relative z-0 w-full mb-6 group ">
+            <InputRegisterProduct
+              name="title"
+              value={createRoom.title}
+              onChange={handleCreateRoomFormSummit}
+              id="title"
+              placeholder=" "
+            />
+
+            <LabelRegisterProduct> ขื่อห้อง</LabelRegisterProduct>
           </div>
 
           <div className="relative z-0 w-full mb-6 group">
             <InputRegisterProduct
-              name="floating_name"
-              id="floating_name"
+              name="price"
+              value={createRoom.price}
+              onChange={handleCreateRoomFormSummit}
+              id="price"
               placeholder=" "
             />
 
-            <LabelRegisterProduct htmlFor="floating_name">
-              {" "}
-              ขื่อห้อง
-            </LabelRegisterProduct>
-          </div>
-          <div className="relative z-0 w-full mb-6 group">
-            <InputRegisterProduct
-              name="floating_price"
-              id="floating_price"
-              placeholder=" "
-            />
-
-            <LabelRegisterProduct htmlFor="floating_price">
-              {" "}
-              ราคา
-            </LabelRegisterProduct>
-          </div>
-          <div className="relative z-0 w-full mb-6 group">
-            <InputRegisterProduct
-              name="repeat_password"
-              id="floating_repeat_password"
-              placeholder=" "
-            />
-
-            <LabelRegisterProduct htmlFor="floating_repeat_password">
-              {" "}
-              ที่อยู่
-            </LabelRegisterProduct>
+            <LabelRegisterProduct htmlFor="price"> ราคา</LabelRegisterProduct>
           </div>
 
           <div className="relative z-0 w-full mb-6 group">
             <InputRegisterProduct
-              name="floating_first_name"
-              id="floating_first_name"
+              name="address"
+              value={createRoom.address}
+              onChange={handleCreateRoomFormSummit}
+              id="address"
               placeholder=" "
             />
 
-            <LabelRegisterProduct htmlFor="floating_first_name">
-              {" "}
-              คำอธิบาย
-            </LabelRegisterProduct>
+            <LabelRegisterProduct> ที่อยู่</LabelRegisterProduct>
+          </div>
+
+          <div className="relative z-0 w-full mb-6 group">
+            <InputRegisterProduct
+              name="description"
+              value={createRoom.description}
+              onChange={handleCreateRoomFormSummit}
+              id="description"
+              placeholder=" "
+            />
+
+            <LabelRegisterProduct> คำอธิบาย</LabelRegisterProduct>
           </div>
 
           <div className="grid md:grid-cols-2 md:gap-6">
             <div className="relative z-0 w-full mb-6 group">
               <InputRegisterProduct
-                name="floating_phone"
-                id="floating_phone"
+                name="categoryId"
+                value={createRoom.categoryId}
+                onChange={handleCreateRoomFormSummit}
+                id="categoryId"
                 placeholder=" "
               />
 
-              <LabelRegisterProduct htmlFor="floating_phone">
-                {" "}
-                ประะภทของห้อง
-              </LabelRegisterProduct>
+              <LabelRegisterProduct> ประะภทของห้อง</LabelRegisterProduct>
             </div>
+
             <div className="relative z-0 w-full mb-6 group">
               <InputRegisterProduct
-                name="floating_last_name"
-                id="floating_last_name"
+                name="provinceId"
+                value={createRoom.provinceId}
+                onChange={handleCreateRoomFormSummit}
+                id="province"
                 placeholder=" "
               />
 
-              <LabelRegisterProduct htmlFor="floating_last_name">
-                {" "}
-                จังหวัด
-              </LabelRegisterProduct>
+              <LabelRegisterProduct> จังหวัด</LabelRegisterProduct>
             </div>
           </div>
 

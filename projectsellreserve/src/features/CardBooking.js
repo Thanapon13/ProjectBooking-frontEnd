@@ -45,6 +45,7 @@ export default function CardBooking({ handleAddToCardReserve }) {
 
       await createBooking(roomId, bookingData);
       navigate(0);
+      // window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       console.log(err);
     }

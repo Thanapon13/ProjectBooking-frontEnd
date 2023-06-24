@@ -10,7 +10,7 @@ export default function PaymentUser({
     <>
       <div className="flex flex-grow">
         <div className="font-bold">
-          {PaymentId && <h1>PaymentId</h1>}
+          {PaymentId && <h1>PaymentId:</h1>}
           <h1>Credit Card Number:</h1>
           <h1>Expiration Date:</h1>
           <h1>CVV:</h1>

@@ -2,7 +2,7 @@ import FormRegisterProduct from "../features/registerProduct/FormRegisterProduct
 export default function RegisterProductPage() {
   return (
     <div>
-      <div className="w-[80%] mt-2 flex m-auto gap-6">
+      <div className="w-[80%] mt-2 flex m-auto gap-6 ">
         <div className="w-[40%] flex flex-col justify-center items-center gap-4">
           <h1 className="text-xl">ลงทะเบียนสินค้ากับเรา</h1>
           <img

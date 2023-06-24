@@ -1,7 +1,6 @@
 import ReactPaginate from "react-paginate";
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import useBooking from "../hooks/useBooking";
 import OrderCardOrderUser from "../components/OrderCardOrderUser";
 import OrderCardReservationPayment from "../components/OrderCardReservationPayment";
 import { BsFillTrash3Fill } from "react-icons/bs";
@@ -15,8 +14,7 @@ export default function AdminPage() {
     handleupdateReservationPaymentConfirmed,
     handleupdateOrderCancel,
     handleupdateReservationPaymentCancel,
-    handleDeleteReservationPayment,
-    handleDeleteReservationonOrder
+    handleDeletePaymentOrder
   } = useAuth();
 
   // console.log("paymentUser:", paymentUser);
@@ -28,6 +26,7 @@ export default function AdminPage() {
 
   const [dataInPage, setDataInPage] = useState([]);
   // console.log("dataInPage", dataInPage);
+
   const [page, setPage] = useState(0);
   // จำนวนรายการแต่บะหน้า
   // จำนวนเลขหน้า = ข้อมูลทั้งหมด / จำนวนรายการแต่ละหน้า
@@ -81,13 +80,9 @@ export default function AdminPage() {
     navigate(0);
   };
 
-  const handleDeleteReservationPayments = roomId => {
-    handleDeleteReservationPayment(roomId);
-    navigate(0);
-  };
-  const handleDeleteReservationonOrders = roomId => {
-    handleDeleteReservationonOrder(roomId);
-    navigate(0);
+  const handleDeletePaymentOrders = orderId => {
+    handleDeletePaymentOrder(orderId);
+    console.log("Deleted orderId:", orderId);
   };
 
   return (
@@ -109,9 +104,7 @@ export default function AdminPage() {
                       <div className="w-full flex justify-end items-center">
                         <i
                           className="text-xl mr-4 hover:text-red-600 cursor-pointer "
-                          onClick={() =>
-                            handleDeleteReservationonOrders(el.Order.Room.id)
-                          }
+                          onClick={() => handleDeletePaymentOrders(el.Order.id)}
                         >
                           <BsFillTrash3Fill />
                         </i>
@@ -164,14 +157,7 @@ export default function AdminPage() {
                     {/* ReservationPayment */}
                     <div className="border-b-2 py-6">
                       <div className="w-full flex justify-end items-center">
-                        <i
-                          className="text-xl mr-4 hover:text-red-600 cursor-pointer "
-                          onClick={() =>
-                            handleDeleteReservationPayments(
-                              el.ReservationPayment?.Room?.id
-                            )
-                          }
-                        >
+                        <i className="text-xl mr-4 hover:text-red-600 cursor-pointer ">
                           <BsFillTrash3Fill />
                         </i>
                       </div>
