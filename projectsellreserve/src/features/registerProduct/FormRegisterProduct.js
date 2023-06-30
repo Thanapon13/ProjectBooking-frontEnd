@@ -1,5 +1,5 @@
 import { Button, Spin, Upload } from "antd";
-import { createRoom } from "../../apis/product-api";
+import { CreateProductRoom } from "../../apis/createroom-api";
 import useProvince from "../../hooks/useProvince";
 import useAuth from "../../hooks/useAuth";
 import useLoading from "../../hooks/useLoading";
@@ -81,7 +81,7 @@ export default function FormRegisterProduct() {
 
       console.log("formData:", formData);
 
-      await createRoom(formData);
+      await CreateProductRoom(formData);
 
       setCreateRoomData({
         title: "",

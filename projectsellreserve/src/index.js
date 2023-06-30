@@ -11,6 +11,7 @@ import ProductContextProvider from "./contexts/ProductContext";
 import CartContextProvider from "./contexts/CartContext";
 import PaymentContextProvider from "./contexts/PaymentContext";
 import BookingContextProvider from "./contexts/BookingContext";
+import CreateRoomContextProvider from "./contexts/CreateRoomContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +23,9 @@ root.render(
             <CartContextProvider>
               <BookingContextProvider>
                 <PaymentContextProvider>
-                  <App />
+                  <CreateRoomContextProvider>
+                    <App />
+                  </CreateRoomContextProvider>
                 </PaymentContextProvider>
               </BookingContextProvider>
             </CartContextProvider>
