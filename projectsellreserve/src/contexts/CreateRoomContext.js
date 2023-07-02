@@ -11,10 +11,10 @@ export default function CreateRoomContextProvider({ children }) {
     const fetchCreateRoom = async () => {
       const res = await GetCreateRoomController();
       setCreateRoomData(res.data.pureCreateRoomControllerData);
-      // console.log(
-      //   "res.data.pureCreateRoomControllerData",
-      //   res.data.pureCreateRoomControllerData
-      // );
+      console.log(
+        "res.data.pureCreateRoomControllerData",
+        res.data.pureCreateRoomControllerData
+      );
     };
     fetchCreateRoom();
   }, []);

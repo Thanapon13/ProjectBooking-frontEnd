@@ -16,5 +16,9 @@ export const updateReservationPaymentCancel = input =>
 
 export const deletePaymentOrder = orderId => axios.delete(`{/admin/${orderId}`);
 
-// export const updateStatusConfirmed = input =>
-//   axios.patch("/admin/statusUpdataConfirmed", input);
+export const confirmedCreateRoom = createRoomId => {
+  console.log("createRoomId:", createRoomId);
+  axios.post("/admin", {
+    id: createRoomId
+  });
+};
